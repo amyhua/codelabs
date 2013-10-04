@@ -1,0 +1,21 @@
+.narrow {
+  width: 300px;
+  margin: auto;
+}
+.form-control {
+  background-color: #F3F3F3;
+  max-width: 100%;
+}
+textarea.brief {
+  height: 100px;
+}
+
+// Submit Code Form
+
+#arrow-on-share {
+  position: relative;
+  z-index: 999;
+  bottom: 158px;
+  left: 207px;
+  width: 32px;
+}

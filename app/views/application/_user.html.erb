@@ -1,0 +1,17 @@
+<%= form_for (@user=User.new), html: {class: 'narrow', role: 'form'} do |f| %>
+    <div class="form-group">
+
+      <%= f.text_field :email, placeholder: 'Email', class: 'validate[required] validate[custom[email]] form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password, placeholder: 'Password', class: 'form-control validate[required,minSize[6],maxSize[50]]', id: 'password1' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'form-control validate[required,equals[password1]]', name: 'password_confirmation' %>
+    </div>
+
+    <div class="wide center">
+      <%= f.submit 'Sign up', class: 'btn btn-success' %><br>
+    </div>
+<% end %>

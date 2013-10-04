@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @codepen.url %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @codepen.title %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @codepen.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_codepen_path(@codepen) %> |
+<%= link_to 'Back', codepens_path %>

@@ -1,0 +1,43 @@
+.label-lg {
+  font-size: 16px;
+}
+.label-med {
+  font-size: 14px;
+}
+
+.nav-icon {
+  border-left: solid 1px #151515;
+  border-right: solid 1px #151515;
+  padding: 3px;
+  font-size: 12px;
+}
+
+span.right {
+  margin-top: 8px;
+  float: right;
+}
+// custom
+
+.navbar {
+  margin-bottom: 0;
+}
+.navbar-form i {
+  font-size: 18px;
+}
+.navbar-form input {
+  width: 135px;
+}
+
+.btn.btn-facebook {
+  background-color: #48649f;
+  color: white;
+  margin-right: 10px;
+}
+
+#reset-password-link {
+  padding-left: 10px;
+  color: white;
+}
+#reset-password-link:hover {
+  text-decoration: none;
+}

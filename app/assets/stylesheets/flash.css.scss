@@ -1,0 +1,35 @@
+.float-center {
+  position: absolute;
+  z-index: 99999;
+  top: 50px;
+  width: 100%;
+  text-align: center;
+}
+.flash {
+  display: inline-block;
+  margin: 10px;
+  color: white;
+  opacity: 0.9;
+  div {
+
+    padding: 8px;
+    border-radius:  5px;
+    opacity:  0.9;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .notice {
+    background-color: rgb(92,184,92);
+  }
+  .alert {
+    background-color: #f02222;
+  }
+  a {
+    color:white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: grey;
+  }
+}
+

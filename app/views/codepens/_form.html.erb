@@ -1,0 +1,38 @@
+<%= form_for @codepen, html: {class: 'narrow', role: 'form'} do |f| %>
+  <% if @codepen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@codepen.errors.count, "error") %> prohibited this codepen from being saved:</h2>
+
+      <ul>
+      <% @codepen.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label 'Grab the Codepen link and paste it below.' %><br />
+
+    <%= f.text_field :url, placeholder: 'http://cdpn.io/yourcodepenhere', required: true, class: 'form-control validate[custom[url]]' %>
+    <small><a data-toggle="collapse" href="#see-how">See how</a></small>
+
+    <div id="see-how" class="collapse">
+      <br>
+      Save your Codepen. Then click on the "Share" button and copy the given link.<br><br>
+      <%= image_tag 'seehow.png', class: 'wide' %>
+      <%= image_tag 'arrow-pointing-down.png', id: 'arrow-on-share' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Give your code a title' %><br />
+    <%= f.text_field :title, class: 'form-control', required: true %>
+  </div>
+  <div class="field">
+    <%= f.label 'Add a brief description.' %><br />
+    <%= f.text_area :note, class: 'brief form-control', maxlength: 250, required: true %>
+  </div><br><br>
+  <div class="actions center">
+    <%= f.submit 'submit your code to the class', class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<%= form_for (current_user) do |f| %>
+
+      <%= f.label 'First Name' %>
+      <%= f.text_field :first_name, class: 'validate[required]' %>
+
+      <%= f.label 'Last Name' %>
+      <%= f.text_field :last_name, class: 'validate[required]' %>
+    <div class="form">
+      <%= f.label :country %>
+      <%= f.select :country, ['United States', 'Panama'], {},
+                   {class: 'validate[required] form-control'} %>
+    </div>
+    <br>
+    <%= f.submit 'Update', class: 'btn-sm btn-black' %><br>
+<% end %>

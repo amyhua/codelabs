@@ -1,0 +1,27 @@
+<h1>Listing codepens</h1>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Title</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @codepens.each do |codepen| %>
+  <tr>
+    <td><%= codepen.url %></td>
+    <td><%= codepen.title %></td>
+    <td><%= codepen.note %></td>
+    <td><%= link_to 'Show', codepen %></td>
+    <td><%= link_to 'Edit', edit_codepen_path(codepen) %></td>
+    <td><%= link_to 'Destroy', codepen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Codepen', new_codepen_path %>

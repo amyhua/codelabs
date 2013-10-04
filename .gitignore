@@ -18,5 +18,6 @@ manual-maker
 question_tracker
 simplecov_example
 ticketee
-
+.gitignore
+.sass-cache
 

@@ -20,13 +20,12 @@
     <div class="navbar-collapse collapse">
       <% if current_user %>
 
-          <span class="right btn btn-success"><i class="icon-user"></i> <%= current_user.email %></span>
+          <span class="right btn btn-success"><i class="icon-user"></i> <%= current_user.first_name %> <%= current_user.last_name %></span>
 
       <% else %>
 
         <%= form_tag user_sessions_path, :method => :post, class: 'navbar-form navbar-right' do %>
               <a type="button" data-toggle="modal" data-target="#modal-signup" class="btn btn-warning"> Register</a>
-              <a type="button" href="<%= auth_at_provider_path(:provider => :facebook) %>" class="btn btn-facebook"><i class="icon-facebook-sign"></i> signin</a>
             <div class="form-group">
               <%= text_field_tag :email, params[:email], placeholder: 'Email', class: 'form-control' %>
             </div>
@@ -65,8 +64,9 @@
   </div>
 </div>
 
-    <div class="float-center">
-      <div class="flash">
+<% unless flash.blank? %>
+    <div class="float-center removable">
+      <div class="flash removable">
         <% flash.each do |name, msg| -%>
             <div class="<%=name%>">
               <%=msg%> <a href="#" data-dismiss="alert" class="remove"><i class="icon-remove"></i></a>
@@ -75,6 +75,7 @@
         <% end %>
       </div>
     </div>
+<% end %>
 
 <% if current_user %>
     <%= render 'sidenav' %>

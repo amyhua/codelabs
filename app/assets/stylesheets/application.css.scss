@@ -24,10 +24,12 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
   margin: auto;
   text-align: center;
 }
-// make room for sidebar
-.container {
-  padding-left: 120px !important;
+a {
+  cursor: pointer;
 }
-.container.body{
-  padding-top: 50px !important;
+.spaced {
+  padding-right: 20px;
+}
+.indent-left {
+  padding-left: 10px;
 }

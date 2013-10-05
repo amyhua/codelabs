@@ -1,6 +1,15 @@
 <%= form_for (@user=User.new), html: {class: 'narrow', role: 'form'} do |f| %>
     <div class="form-group">
-
+      <%= f.text_field :first_name, placeholder: 'First Name', class: 'validate[required] form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :last_name, placeholder: 'Last Name', class: 'validate[required] form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :codepen_username, placeholder: 'Your Codepen Username', class: 'validate[required] form-control' %>
+      <small>Don't have one? Sign up at <a href="http://codepen.io">codepen.io.</a></small>
+    </div>
+    <div class="form-group">
       <%= f.text_field :email, placeholder: 'Email', class: 'validate[required] validate[custom[email]] form-control' %>
     </div>
     <div class="form-group">

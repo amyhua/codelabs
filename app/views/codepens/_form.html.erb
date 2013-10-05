@@ -1,4 +1,4 @@
-<%= form_for @codepen, html: {class: 'narrow', role: 'form'} do |f| %>
+<%= simple_form_for @codepen, url: user_codepens_path(current_user), html: {class: 'narrow', role: 'form'} do |f| %>
   <% if @codepen.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@codepen.errors.count, "error") %> prohibited this codepen from being saved:</h2>
@@ -19,7 +19,7 @@
 
     <div id="see-how" class="collapse">
       <br>
-      Save your Codepen. Then click on the "Share" button and copy the given link.<br><br>
+      <b>Save your Codepen</b>. Then click on the "Share" button and copy the given link.<br><br>
       <%= image_tag 'seehow.png', class: 'wide' %>
       <%= image_tag 'arrow-pointing-down.png', id: 'arrow-on-share' %>
     </div>
@@ -28,10 +28,15 @@
     <%= f.label 'Give your code a title' %><br />
     <%= f.text_field :title, class: 'form-control', required: true %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label 'Add a brief description.' %><br />
     <%= f.text_area :note, class: 'brief form-control', maxlength: 250, required: true %>
-  </div><br><br>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Link your submission to a lesson, if any' %><br>
+    <%= f.association :lesson, label: false, class: 'form-control' %>
+  </div>
+    <br><br>
   <div class="actions center">
     <%= f.submit 'submit your code to the class', class: 'btn btn-success' %>
   </div>

@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin
+    @lessons = Lesson.all
+  end
+
   # PUT /users/1
   # PUT /users/1.xml
   def update

@@ -1,20 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Url:</b>
-  <%= @codepen.url %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @codepen.title %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%= @codepen.note %>
-</p>
-
-
-<%= link_to 'Edit', edit_codepen_path(@codepen) %> |
-<%= link_to 'Back', codepens_path %>
+<div class="page" data-sidebar="#my-files">
+  <div class="navbar-fixed-below-top">
+    <div class="container">
+      <a id="1col-view" class="spaced"><i class="icon-list-ul"></i></a>
+      <a class="spaced" id="2col-view"><i class="icon-columns"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Created by <%= @user.first_name%> <%=@user.last_name%></h2>
+    </div>
+  </div>
+  <%= render 'index' %>>
+</div>
+<script async src="http://codepen.io/assets/embed/ei.js"></script>

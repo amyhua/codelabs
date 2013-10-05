@@ -1,7 +1,7 @@
 class CodepensController < ApplicationController
   # GET /codepens
   # GET /codepens.json
-  def index
+  def class_index
     @codepens = Codepen.all
 
     respond_to do |format|
@@ -10,25 +10,22 @@ class CodepensController < ApplicationController
     end
   end
 
-  # GET /codepens/1
-  # GET /codepens/1.json
-  def show
-    @codepen = Codepen.find(params[:id])
+  def index #My Files, Classmates
+    @codepens = Codepen.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @codepen }
+      format.html # index.html.erb
+      format.json { render json: @codepens }
     end
   end
 
-  # GET /codepens/new
-  # GET /codepens/new.json
+
   def new
     @codepen = Codepen.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @codepen }
     end
   end
 
@@ -41,11 +38,12 @@ class CodepensController < ApplicationController
   # POST /codepens.json
   def create
     @codepen = Codepen.new(params[:codepen])
+    @codepen.url = @codepen.url.sub('http://cdpn.io/','')
+    @codepen.user = current_user
 
     respond_to do |format|
       if @codepen.save
-        format.html { redirect_to @codepen, notice: 'Codepen was successfully created.' }
-        format.json { render json: @codepen, status: :created, location: @codepen }
+        format.html { redirect_to class_url, notice: 'Your codepen was successfully submitted to the class.' }
       else
         format.html { render action: "new" }
         format.json { render json: @codepen.errors, status: :unprocessable_entity }
@@ -60,13 +58,34 @@ class CodepensController < ApplicationController
 
     respond_to do |format|
       if @codepen.update_attributes(params[:codepen])
-        format.html { redirect_to @codepen, notice: 'Codepen was successfully updated.' }
+        format.html { render action: "index", notice: 'Your codepen submission was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @codepen.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def favorite
+    @codepen = Codepen.find(params[:id])
+    @user = User.find(params[:user_id])
+    @user.favorite(@codepen)
+    @user.save
+      respond_to do |format|
+        format.js
+      end
+
+  end
+
+  def unfavorite
+    @codepen = Codepen.find(params[:id])
+    @user = User.find(params[:user_id])
+    @user.unfavorite(@codepen)
+    @user.save
+      respond_to do |format|
+        format.js
+      end
   end
 
   # DELETE /codepens/1

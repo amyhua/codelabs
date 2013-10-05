@@ -1,5 +1,5 @@
 <nav class="left">
-  <a id="lessons" href="#" class="button green">
+  <a id="lessons" href="<%= lessons_path %>" class="button green">
     <i class="icon-home"></i>
     <span>lessons</span>
   </a>
@@ -14,7 +14,7 @@
       <label for="pinned" class="button">
         <input type="checkbox" name="pinned" id="pinned">
         <i class="icon-share-alt"></i>
-        <span>upcoming</span>
+        <span>future</span>
       </label>
     </li>
     <li>
@@ -24,7 +24,7 @@
       </a>
     </li>
   </ul>
-  <a id="code" href="<%=new_codepen_path %>" class="button red">
+  <a id="code" href="<%=new_user_codepen_path(current_user) %>" class="button red">
     <i class="icon-terminal"></i>
     <span>code</span>
   </a>
@@ -38,31 +38,39 @@
     </li>
   </ul>
   <!-- -->
-  <a id="show-and-tell" href="#" class="button green">
+  <a id="class" href="<%= class_url %>" class="button green">
     <i class="icon-group"></i>
     <span>class</span>
   </a>
-  <a id="files" href="#" class="button green">
+  <a id="my-files" href="<%= user_codepens_path(current_user) %>" class="button green">
     <i class="icon-folder-open"></i>
-    <span>files</span>
+    <span>my files</span>
   </a>
   <a id="favorites" href="#" class="button green">
     <i class="icon-heart-empty"></i>
     <span>faves</span>
   </a>
   <a id="resources" href="#" class="button green">
-    <i class="icon-puzzle-piece"></i>
-    <span>resources</span>
+    <i class="icon-globe"></i>
+    <span>links</span>
   </a>
   <a id="ask-a-question" href="#" class="button green">
     <i class="icon-question-sign"></i>
     <span>Ask <i class="icon-question-sign"></i></span>
   </a>
+  <a id="ask-a-question" href="#" class="button green">
+    <i class="icon-comments"></i>
+    <span>Q & A</span>
+  </a>
+  <a id="admin" href="<%= admin_path %>" class="button brown">
+    <i class="icon-dashboard"></i>
+    <span>admin</i></span>
+  </a>
   <a id="settings" href="#" class="button black">
     <i class="icon-gears"></i>
     <span>settings</span>
   </a>
-  <a id="logout" href="#" class="button black bottom">
+  <a id="logout" href="<%= logout_path %>" class="button black bottom">
     <i class="icon-off"></i>
     <span>logout</span>
   </a>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131004085727) do
+ActiveRecord::Schema.define(:version => 20131005023451) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,7 +26,22 @@ ActiveRecord::Schema.define(:version => 20131004085727) do
     t.text     "note"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "lesson_id"
+    t.integer  "user_id"
   end
+
+  add_index "codepens", ["lesson_id"], :name => "index_codepens_on_lesson_id"
+  add_index "codepens", ["user_id"], :name => "index_codepens_on_user_id"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "codepen_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favorites", ["codepen_id"], :name => "index_favorites_on_codepen_id"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "lessons", :force => true do |t|
     t.string   "name"
@@ -51,11 +66,11 @@ ActiveRecord::Schema.define(:version => 20131004085727) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                          :null => false
+    t.string   "email",                                              :null => false
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "activation_state"
     t.string   "activation_code"
     t.datetime "activation_code_expires_at"
@@ -70,6 +85,10 @@ ActiveRecord::Schema.define(:version => 20131004085727) do
     t.integer  "failed_logins_count",             :default => 0
     t.datetime "lock_expires_at"
     t.string   "type"
+    t.boolean  "admin",                           :default => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "codepen_username"
   end
 
   add_index "users", ["activation_code"], :name => "index_users_on_activation_code"

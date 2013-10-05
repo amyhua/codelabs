@@ -1,8 +1,8 @@
-.favorite, .favorited {
+.favorite {
   cursor: pointer;
   position: relative;
 }
-.favorite.icon-heart, .favorited.icon-heart {
+.favorite.icon-heart {
   padding-left: 3px;
 }
 .favorite .icon-heart {
@@ -11,9 +11,10 @@
     color: deeppink;
   }
 }
-.favorited .icon-heart {
+.favorite.favorited .icon-heart {
   color: deeppink;
 }
+
 .icon-heart {
   padding-left: 3px;
 }
@@ -21,6 +22,6 @@
   position: relative;
   z-index: 10;
 }
-a.favorite:hover, a.favorited:hover {
+a.favorite:hover {
   text-decoration: none;
 }

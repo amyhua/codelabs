@@ -5,7 +5,7 @@
         <div class="codepen-desc">
           <p class="pull-left center indent-left">
             <%= link_to (content_tag :i, nil, class:'icon-heart', style:'font-size: 20px'), '#', data: {user: current_user.id, codepen: codepen.id},
-                        remote: true, class: "#{ current_user.favorited?(codepen) ? 'favorited' : 'favorite' }", id: "codepen-#{codepen.id}" %>
+                        remote: true, class: "favorite #{'favorited' if current_user.favorited?(codepen)}", id: "codepen-#{codepen.id}" %>
 
             <br>
             <span id="codepen-<%=codepen.id%>-faves" class="faves"><%=codepen.favorites.length%></span>

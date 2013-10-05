@@ -6,7 +6,8 @@ class CodepensController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @codepens }
+      format.json { head :no_content }
+      format.js { head :no_content }
     end
   end
 
@@ -72,10 +73,10 @@ class CodepensController < ApplicationController
     @user = User.find(params[:user_id])
     @user.favorite(@codepen)
     @user.save
-      respond_to do |format|
-        format.js
-      end
-
+    respond_to do |format|
+      format.html { render nothing: true }
+      format.json { render nothing: true }
+    end
   end
 
   def unfavorite
@@ -83,9 +84,10 @@ class CodepensController < ApplicationController
     @user = User.find(params[:user_id])
     @user.unfavorite(@codepen)
     @user.save
-      respond_to do |format|
-        format.js
-      end
+    respond_to do |format|
+      format.html { render nothing: true }
+      format.json { render nothing: true }
+    end
   end
 
   # DELETE /codepens/1

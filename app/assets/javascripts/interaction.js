@@ -20,7 +20,7 @@ $(document).ready(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
             dataType: "json",
             data: {user_id: el.data('user'), id: el.data('codepen')},
-            success: el.addClass('favorited').removeClass('favorite')
+            success: el.addClass('favorited')
         });
     }
     function unfavorite(el) {
@@ -30,28 +30,29 @@ $(document).ready(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
             dataType: "json",
             data: {user_id: el.data('user'), id: el.data('codepen')},
-            success: el.removeClass('favorited').addClass('favorite')
+            success: el.removeClass('favorited')
         });
     }
-
-
-    $('a.favorite').on('click', function(e){
+    $('a').bind('click', '.favorite', function(e){
         var $this = $(this);
         var id = '#codepen-' + $(this).data('codepen');
+        var $id = $(id)
         e.preventDefault()
-        $.when( favorite($this) ).then(function(el){
-            var $id = $(id)
-            var num = Number($id.next().next().html());
-            num++;
-            $id.next().next().html(num);
-        })
+        if ($this.hasClass('favorited')) {
+            $.when( unfavorite($this) ).then(function(){
+                var num = Number($id.next().next().html());
+                num--;
+                $id.next().next().html(num);
+            })
+
+        } else {
+            $.when( favorite($this) ).then(function(){
+                var $id = $(id)
+                var num = Number($id.next().next().html());
+                num++;
+                $id.next().next().html(num);
+            })
+        }
     })
-    $('a.favorited').on('click', function(e){
-        e.preventDefault()
-        unfavorite( $(this) )
-    })
-
-
-
 
 });

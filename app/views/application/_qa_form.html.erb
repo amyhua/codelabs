@@ -1,0 +1,32 @@
+<div class="wide center">
+  <div class="row">
+    <div class="padded">
+      <a data-toggle="collapse" data-target="#request-status" class="narrow btn btn-primary">Request 1-on-1 instructor help</a>
+      <div id="request-status" class="collapse fade">
+        <br><br>
+        <!-- request sent message -->
+
+      </div>
+      <hr>
+
+      <a class="narrow btn btn-warning" data-toggle="collapse" data-target="#question-form">Ask the class a question</a>
+      <br><br>
+      <div id="question-form" class="collapse fade">
+        <p class="narrow">
+          Thanks for asking! <br>If you are asking a coding question, please
+          give full details about the error and a link to your CODEPEN
+          (<a data-toggle="collapse" data-target="#see-how">see how</a>)
+          so people can help you.
+        <div id="see-how" class="collapse">
+          <br>
+          <b>Save your Codepen</b>.<br>Then click on the "Share" button and copy the given link.<br><br>
+          <%= image_tag 'seehow.png', class: 'wide' %>
+          <%= image_tag 'arrow-pointing-down.png', id: 'arrow-on-share' %>
+        </div>
+          <br>
+        </p>
+        <%= render 'questions/form' %>
+      </div>
+    </div>
+  </div>
+</div>

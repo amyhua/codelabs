@@ -13,9 +13,6 @@
  *= require_tree .
  */
 
-body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
-  margin-right: 0px !important;
-}
 
 .wide {
   width: 100%;
@@ -24,8 +21,8 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
   margin: auto;
   text-align: center;
 }
-a {
-  cursor: pointer;
+.padded {
+  padding: 50px;
 }
 .spaced {
   padding-right: 20px;

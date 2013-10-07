@@ -1,10 +1,12 @@
 Collaboration::Application.routes.draw do
 
+  resources :questions
+
+
   resources :lessons
   root to: "lessons#index"
 
   resources :users, :admins do
-    resources :favorites
     resources :codepens
     collection do
       get :login_from_http_basic
@@ -22,7 +24,8 @@ Collaboration::Application.routes.draw do
 
   get 'class' => 'codepens#class_index', as: :class
   get 'admin' => 'users#admin', as: :admin
-
+  get 'links' => 'application#links', as: :links
+  get 'favorites' => 'codepens#favorites', as: :favorites
   match 'favorite' => 'codepens#favorite', :as => :favorite_codepen
   match 'unfavorite' => 'codepens#unfavorite', :as => :unfavorite_codepen
 

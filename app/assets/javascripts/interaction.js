@@ -33,7 +33,7 @@ $(document).ready(function(){
             success: el.removeClass('favorited')
         });
     }
-    $('a').bind('click', '.favorite', function(e){
+    $('a.favorite').bind('click', function(e){
         var $this = $(this);
         var id = '#codepen-' + $(this).data('codepen');
         var $id = $(id)

@@ -29,4 +29,13 @@ class User < ActiveRecord::Base
   def favorited?(codepen)
     self.favorites.any? {|f| f.codepen == codepen}
   end
+
+  def favorite_codepens
+    codepens = []
+    for fave in self.favorites
+      codepens.push(fave.codepen)
+    end
+    return codepens
+  end
+
 end

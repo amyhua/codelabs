@@ -28,7 +28,7 @@
     <i class="icon-terminal"></i>
     <span>code</span>
   </a>
-  <!-- submenu of "members" -->
+  <!-- submenu of "code" -->
   <ul>
     <li>
       <a data-toggle="modal" data-target="#modal-submit-code" class="button">
@@ -46,21 +46,21 @@
     <i class="icon-folder-open"></i>
     <span>my files</span>
   </a>
-  <a id="favorites" href="#" class="button green">
+  <a id="favorites" href="<%=favorites_path %>" class="button green">
     <i class="icon-heart-empty"></i>
-    <span>faves</span>
+    <span style="font-size: 16px">favorites</span>
   </a>
-  <a id="resources" href="#" class="button green">
+  <a id="resources" href="<%=links_path %>" class="button green">
     <i class="icon-globe"></i>
     <span>links</span>
   </a>
-  <a id="ask-a-question" href="#" class="button green">
-    <i class="icon-question-sign"></i>
-    <span>Ask <i class="icon-question-sign"></i></span>
-  </a>
-  <a id="ask-a-question" href="#" class="button green">
+  <a id="q-n-a" class="button green">
     <i class="icon-comments"></i>
     <span>Q & A</span>
+  </a>
+  <a id="ask-a-question" data-toggle="modal" data-target="#modal-qa" class="button red">
+    <i class="icon-question-sign"></i>
+    <span>Ask <i class="icon-question-sign"></i></span>
   </a>
   <a id="admin" href="<%= admin_path %>" class="button brown">
     <i class="icon-dashboard"></i>
@@ -75,3 +75,20 @@
     <span>logout</span>
   </a>
 </nav>
+
+<!-- q and a form modal -->
+<div class="modal fade in" id="modal-qa" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+      </div>
+      <div class="modal-body">
+        <div class="wrapper qa-form">
+          <%= render 'qa_form' %>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div><!-- /.modal -->

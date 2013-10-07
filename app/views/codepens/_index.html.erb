@@ -2,7 +2,7 @@
   <% for codepen in @codepens %>
       <div class="col-md-12 view">
         <p class="codepen" data-height="268" data-theme-id="0" data-slug-hash="<%= codepen.url%>" data-user="<%= codepen.user.codepen_username%>" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/<%=codepen.user.codepen_username%>/pen/<%=codepen.url%>'><%=codepen.url%></a> by <%=codepen.user.codepen_username%> (<a href='http://codepen.io/amyhua'>@amyhua</a>) on <a href='http://codepen.io'>CodePen</a></p><br>
-        <div class="codepen-desc">
+        <div class="codepen-desc clearfix">
           <p class="pull-left center indent-left">
             <%= link_to (content_tag :i, nil, class:'icon-heart', style:'font-size: 20px'), '#', data: {user: current_user.id, codepen: codepen.id},
                         remote: true, class: "favorite #{'favorited' if current_user.favorited?(codepen)}", id: "codepen-#{codepen.id}" %>

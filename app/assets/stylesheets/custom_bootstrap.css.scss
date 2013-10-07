@@ -1,4 +1,4 @@
-// make room for sidebar
+// bootstrap styling overrides
 .container {
   max-width: 1240px;
   padding-left: 150px;
@@ -6,6 +6,13 @@
 .container.body{
   padding-top: 60px;
 }
-a:hover {
-  color: inherit;
+a {
+  cursor: pointer;
+  color: #B64396;
+  &:hover {
+    color: inherit;
+  }
+}
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+  margin-right: 0px;
 }

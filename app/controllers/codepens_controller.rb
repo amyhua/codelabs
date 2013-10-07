@@ -21,6 +21,10 @@ class CodepensController < ApplicationController
     end
   end
 
+  def favorites
+    @codepens = current_user.favorite_codepens
+  end
+
 
   def new
     @codepen = Codepen.new

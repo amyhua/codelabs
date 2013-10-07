@@ -29,11 +29,13 @@ $(document).ready(function(){
     $('a').tooltip()
     $('form').validationEngine('attach')
 
-    // navbar
+    // sidenavbar
     function activateTab(el){
         this.el = el;
-        $('nav a').removeClass('active')
-        this.el.addClass('active')
+        if (this.el.hasClass('tabbable') ){
+            $('nav a').removeClass('active')
+            this.el.addClass('active')
+        }
     }
 
     $('nav > a').on('click', function(){

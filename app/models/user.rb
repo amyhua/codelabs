@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :providers, :class_name => "UserProvider", :dependent => :destroy
   has_many :codepens
   has_many :favorites
+  has_many :questions
+  has_many :answers
   accepts_nested_attributes_for :providers
 
   authenticates_with_sorcery!

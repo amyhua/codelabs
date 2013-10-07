@@ -16,3 +16,11 @@ a {
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
   margin-right: 0px;
 }
+.badge {
+  font-size: inherit;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: inherit;
+  margin-bottom: 10px;
+}

@@ -12,8 +12,10 @@
           </p>
 
           <p class="indent-left pull-left">
-            <i class="icon-user"></i>
-            <%= link_to "#{codepen.user.first_name} #{codepen.user.last_name}", user_codepens_path(codepen.user) %><br>
+            by
+            <%= link_to "#{codepen.user.name}", user_path(codepen.user) %>
+            <%= time_ago_in_words(codepen.updated_at) %> ago
+            <br>
             <b><%= codepen.title %></b>
             <br>
             <%= codepen.note %>
@@ -23,3 +25,4 @@
       </div>
   <% end %>
 </div>
+<script async src="http://codepen.io/assets/embed/ei.js"></script>

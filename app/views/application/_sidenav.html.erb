@@ -1,5 +1,5 @@
 <nav class="left">
-  <a id="lessons" href="<%= lessons_path %>" class="button green">
+  <a id="lessons" href="<%= lessons_path %>" class="tabbable button green">
     <i class="icon-home"></i>
     <span>lessons</span>
   </a>
@@ -24,7 +24,7 @@
       </a>
     </li>
   </ul>
-  <a id="code" href="<%=new_user_codepen_path(current_user) %>" class="button red">
+  <a id="code" href="<%=new_user_codepen_path(current_user) %>" class="tabbable button red">
     <i class="icon-terminal"></i>
     <span>code</span>
   </a>
@@ -38,23 +38,23 @@
     </li>
   </ul>
   <!-- -->
-  <a id="class" href="<%= class_url %>" class="button green">
+  <a id="class" href="<%= class_url %>" class="tabbable button green">
     <i class="icon-group"></i>
     <span>class</span>
   </a>
-  <a id="my-files" href="<%= user_codepens_path(current_user) %>" class="button green">
-    <i class="icon-folder-open"></i>
-    <span>my files</span>
+  <a id="my-files" href="<%= user_path(current_user) %>" class="tabbable button green">
+    <i class="icon-user"></i>
+    <span>me</span>
   </a>
-  <a id="favorites" href="<%=favorites_path %>" class="button green">
+  <a id="favorites" href="<%=favorites_path %>" class="tabbable button green">
     <i class="icon-heart-empty"></i>
     <span style="font-size: 16px">favorites</span>
   </a>
-  <a id="resources" href="<%=links_path %>" class="button green">
+  <a id="links" href="<%=links_path %>" class="tabbable button green">
     <i class="icon-globe"></i>
     <span>links</span>
   </a>
-  <a id="q-n-a" class="button green">
+  <a id="q-n-a" class="tabbable button green" href="<%= questions_path%>">
     <i class="icon-comments"></i>
     <span>Q & A</span>
   </a>
@@ -62,11 +62,11 @@
     <i class="icon-question-sign"></i>
     <span>Ask <i class="icon-question-sign"></i></span>
   </a>
-  <a id="admin" href="<%= admin_path %>" class="button brown">
+  <a id="admin" href="<%= admin_path %>" class="tabbable button brown">
     <i class="icon-dashboard"></i>
     <span>admin</i></span>
   </a>
-  <a id="settings" href="#" class="button black">
+  <a id="settings" href="#" class="tabbable button black">
     <i class="icon-gears"></i>
     <span>settings</span>
   </a>

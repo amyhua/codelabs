@@ -1,15 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h2><%=@question.name %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @question.name %>
-</p>
+<div class="three-fourths">
+  <%= simple_format(@question.detail) %>
+</div>
+<br><br>
+<h4>Answers</h4>
 
-<p>
-  <b>Detail:</b>
-  <%= @question.detail %>
-</p>
-
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Back to Questions', questions_path %>

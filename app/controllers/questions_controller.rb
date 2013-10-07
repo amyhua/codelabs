@@ -41,13 +41,14 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
+    @question.user = current_user
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render json: @question, status: :created, location: @question }
+        format.html { redirect_to :back, notice: 'Question was successfully submitted to the classroom Q&A.' }
+        format.json { render json: @questions, status: :created, location: @question }
       else
-        format.html { render action: "new" }
+        format.html { render :back, alert: 'Question was not created. Something went wrong.' }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end

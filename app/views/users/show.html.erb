@@ -1,9 +1,86 @@
-<p id="notice"><%= notice %></p>
+<div id="subnav" class="navbar-fixed-below-top" role="navigation">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li>
+        <a id="1col-view"><i class="icon-list-ul"></i></a>
+      </li>
+      <li>
+        <a class="spaced" id="2col-view"><i class="icon-columns"></i></a>
+      </li>
+      <li>
+        <a href="#codepens">Codepens</a>
+      </li>
+      <li>
+        <a href="#questions">Questions</a>
+      </li>
+      <li>
+        <a href="#answers">Answers</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<p>
-  <b>User:</b>
-  <%= @user.email %>
-</p>
+<div class="page" data-sidebar="#me">
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <h1><i class="icon-user"></i> <%= @user.name%></h1>
+  <div id="codepens">
+    <h3>Codepens <span class="badge"><%=@user.codepens.length%></span></h3>
+    <div class="row">
+      <script async src="http://codepen.io/assets/embed/ei.js"></script>
+      <% for codepen in @user.codepens %>
+          <div class="col-md-6 view">
+            <p class="codepen" data-height="268" data-theme-id="0" data-slug-hash="<%= codepen.url%>" data-user="<%= codepen.user.codepen_username%>" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/<%=codepen.user.codepen_username%>/pen/<%=codepen.url%>'><%=codepen.url%></a> by <%=codepen.user.codepen_username%> (<a href='http://codepen.io/amyhua'>@amyhua</a>) on <a href='http://codepen.io'>CodePen</a></p><br>
+            <div class="codepen-desc clearfix">
+              <p class="pull-left center indent-left">
+                <%= link_to (content_tag :i, nil, class:'icon-heart', style:'font-size: 20px'), '#', data: {user: current_user.id, codepen: codepen.id},
+                            remote: true, class: "favorite #{'favorited' if current_user.favorited?(codepen)}", id: "codepen-#{codepen.id}" %>
+                <br>
+                <span id="codepen-<%=codepen.id%>-faves" class="faves"><%=codepen.favorites.length%></span>
+              </p>
+
+              <p class="indent-left pull-left">
+                <b><%= codepen.title %></b>
+                <br>
+                <%= codepen.note %>
+                <br><br><br>
+              </p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="row">
+    <div id="questions" class="col-md-6 view">
+      <h3>Questions <span class="badge"><%=@user.questions.length%></span></h3>
+        <% for question in @user.questions %>
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <span class="panel-title">
+                <%= link_to question.name, question_path(question)%>
+              </span>
+            </div>
+            <div class="panel-body">
+              <%= question.detail[0,140] %><%= "..." if question.detail.length > 140 %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+    <div id="answers" class="col-md-6 view">
+      <h3>Answers <span class="badge"><%=@user.answers.length%></span></h3>
+        <% for answer in @user.answers %>
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <span class="panel-title">
+                <%= link_to answer.question.name[0,140], question_path(question)%>
+              </span>
+            </div>
+            <div class="panel-body">
+              <%= answer.content[0,140] %><%= "..." if question.detail.length > 140 %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+</div>

@@ -1,25 +1,32 @@
-<h1>Listing questions</h1>
+<div class="page" data-sidebar="#q-n-a">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Q & A</h2>
+      <a data-toggle="modal" data-target="#modal-qa" class="btn btn-warning">
+        Ask a Question
+      </a>
+      <br><br>
+    </div>
+    <div class="col-md-12">
+      <ul class="list-group">
+        <% for question in @questions %>
+          <li class="list-group-item">
+            <header>
+              <h4><%= link_to question.name, question_path(question) %></h4>
+            </header>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Detail</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+            <small class="subheader indent-left">
+              by <%= link_to question.user.name, user_path(question.user)%>
+              <%= time_ago_in_words question.created_at %> ago |
+              <%= question.answers.length%>
+              <%= link_to 'answers', user_path(question.user)%>
+            </small>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<% @questions.each do |question| %>
-  <tr>
-    <td><%= question.name %></td>
-    <td><%= question.detail %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Question', new_question_path %>

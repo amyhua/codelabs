@@ -1,3 +1,6 @@
 class Question < ActiveRecord::Base
-  attr_accessible :detail, :name
+  default_scope order('updated_at DESC')
+  attr_accessible :detail, :name, :user_id
+  belongs_to :user
+  has_many :answers
 end

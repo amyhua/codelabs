@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007052009) do
+ActiveRecord::Schema.define(:version => 20131007083355) do
 
   create_table "answers", :force => true do |t|
     t.text     "content"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20131007052009) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "codepen_username"
+    t.string   "image"
   end
 
   add_index "users", ["activation_code"], :name => "index_users_on_activation_code"

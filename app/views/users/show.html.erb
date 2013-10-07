@@ -61,6 +61,9 @@
               </span>
             </div>
             <div class="panel-body">
+              <small class="subheader">
+                <%= time_ago_in_words(question.created_at) %> ago
+              </small><br>
               <%= question.detail[0,140] %><%= "..." if question.detail.length > 140 %>
             </div>
           </div>
@@ -72,11 +75,16 @@
           <div class="panel panel-success">
             <div class="panel-heading">
               <span class="panel-title">
-                <%= link_to answer.question.name[0,140], question_path(question)%>
+                <%= link_to answer.question.name[0,140], question_path(answer.question)%>
               </span>
             </div>
             <div class="panel-body">
+              <small class="subheader">
+                <%= time_ago_in_words(question.created_at) %> ago
+              </small><br>
+              <% unless answer.content.blank? %>
               <%= answer.content[0,140] %><%= "..." if question.detail.length > 140 %>
+              <% end %>
             </div>
           </div>
         <% end %>

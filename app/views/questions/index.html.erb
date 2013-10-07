@@ -19,7 +19,7 @@
               by <%= link_to question.user.name, user_path(question.user)%>
               <%= time_ago_in_words question.created_at %> ago |
               <%= question.answers.length%>
-              <%= link_to 'answers', user_path(question.user)%>
+              <%= link_to (question.answers.length == 1 ? 'answer' : 'answers'), question_path(question)%>
             </small>
           </li>
         <% end %>

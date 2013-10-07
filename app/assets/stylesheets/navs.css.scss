@@ -71,3 +71,12 @@ span.right {
 #subnav li.active {
   border-bottom: solid 5px;
 }
+
+// sidenav customs
+
+nav.left > .button.active > span {
+  display: none;
+}
+nav.left > .button.active:hover > span {
+  display: inline;
+}

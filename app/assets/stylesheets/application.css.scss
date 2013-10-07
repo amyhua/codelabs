@@ -38,8 +38,17 @@ a.active-link {
   color: #818181;
 }
 .tab-left{
-  padding-left: 30px
+  padding-left: 30px;
+}
+.align-right {
+  text-align: right;
 }
 .three-fourths {
   width: 75%;
+}
+
+// images
+
+.thumbnail {
+  width: 64px;
 }

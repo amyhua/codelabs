@@ -98,7 +98,7 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-    @user.phone = @user.phone.sub('-','').sub(' ','')
+    @user.phone = @user.phone.sub('-','').sub(' ','') unless @user.phone.nil?
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

@@ -50,7 +50,7 @@
         <div class="col-lg-12">
           <h2>Lessons in Web Design!</h2><br>
 
-          <% unless @upcoming_lessons.nil? %>
+<% unless @upcoming_lessons.blank? %>
           <div class="jumbotron">
             <div>
               <% first_lesson = @upcoming_lessons.first %>
@@ -63,7 +63,6 @@
               <%= image_tag @comic %>
             </div>
           </div>
-         <% end %>
         </div>
       </div>
 
@@ -81,10 +80,10 @@
             </div>
     </div>
   <% end %>
-
+<% end %>
       <hr>
   <h3 id="past">Past lessons</h3>
-  <% unless @past_lessons.nil? %>
+  <% unless @past_lessons.blank? %>
   <% for lesson in @past_lessons %>
       <div class="row">
         <div class="col-sm-1">

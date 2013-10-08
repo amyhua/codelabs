@@ -3,9 +3,9 @@ class LessonsController < ApplicationController
   before_filter :require_admin, except: [:index, :show]
 
   def index
-    @lessons = Lesson.all
-    @past_lessons = Lesson.past
-    @upcoming_lessons = Lesson.upcoming
+    @lessons = Lesson.published
+    @past_lessons = Lesson.published.past
+    @upcoming_lessons = Lesson.published.upcoming
     comics = [
         'http://imgs.xkcd.com/comics/compiling.png',
         'http://imgs.xkcd.com/comics/windows_7.png',
@@ -24,8 +24,8 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     @lesson = Lesson.find(params[:id])
-    @next_lesson = Lesson.where("date > ?", @lesson.date ).first
-    @prev_lesson = Lesson.where("date < ?", @lesson.date ).last
+    @next_lesson = Lesson.published.where("date > ?", @lesson.date ).first
+    @prev_lesson = Lesson.published.where("date < ?", @lesson.date ).last
 
     respond_to do |format|
       format.html # show.html.erb

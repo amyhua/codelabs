@@ -26,7 +26,12 @@ input[type="checkbox"] {
   width: 32px;
 }
 
+.input.select.optional.codepen_lesson select {
+  max-width: 100%;
+}
+
 // Questions form
 #question_detail {
   height: 150px;
 }
+

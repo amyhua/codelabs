@@ -1,3 +1,25 @@
+<div id="subnav" class="navbar-fixed-below-top" role="navigation">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li>
+        <a id="1col-view" class="spaced"><i class="icon-list-ul"></i></a>
+      </li>
+      <li>
+        <a class="spaced" id="2col-view"><i class="icon-columns"></i></a>
+      </li>
+      <li>
+        <a href="#admins">Admin Users</a>
+      </li>
+      <li>
+        <a href="#students">Students</a>
+      </li>
+      <li>
+        <a href="#lesson-planning">Lesson Planning</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <div class="page" data-sidebar="#admin">
   <h1>Admin Dashboard</h1>
   <p>All admins have access to the admin dashboard. Admins can:
@@ -11,16 +33,18 @@
   <br><br>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">Admin Settings</h4>
+      <h4 class="panel-title">Admin Notification Settings</h4>
     </div>
     <div class="panel-body">
       <%= simple_form_for current_user do |f| %>
           <%= f.input :receive_email, label: 'Receive email alerts for instructor help requests' %>
           <%= f.input :receive_sms, label: 'Receive SMS alerts for instructor help requests' %>
+          <div class="tab-left">
             <%= f.input :phone, label: '10-digit Phone Number (no dashes or spaces)',
-                        wrapper_html: {class: 'form-group'},
-                        input_html: {class: 'form-control validate[custom[tendigits]] validate[custom[integer]]',
+                        wrapper_html: {class: 'form-group', style: 'width: 350px;'},
+                        input_html: { class: 'form-control validate[custom[tendigits]] validate[custom[integer]]',
                                      maxlength: 10}%>
+          </div>
           <div class="align-right">
             <%= f.submit 'Update Admin Settings', class: 'btn btn-success' %>
           </div>
@@ -29,7 +53,7 @@
   </div>
   <br>
 
-  <a class="subheader no-decor" data-toggle="collapse" data-target="#admins"><h4>Admins <i class="icon-collapse"></i></h4></a>
+  <a id="admins" class="subheader no-decor" data-toggle="collapse" data-target="#admins"><h4>Admins <i class="icon-collapse"></i></h4></a>
   <table id="admins" class="collapse fade in table table-striped">
     <tr>
       <th></th>
@@ -49,14 +73,14 @@
           <td><%= user.codepen_username%></td>
           <td><%= user.email %></td>
           <td><%= user.receive_sms ? 'SMS alerts' : 'No SMS alerts'%><br><%=user.receive_email ? 'Email alerts' : 'No email alerts'%></td>
-          <td><%= link_to 'Remove admin', remove_admin_path(id: user.id), confirm: 'Are you sure you want to remove this user as an admin?' %></td>
-          <td><%= link_to 'Delete user', user_path(user), method: :delete, confirm: 'Are you sure you want to delete this user? This cannot be undone.' %></td>
+          <td><%= link_to 'Remove admin', remove_admin_path(id: user.id), confirm: 'Are you sure you want to remove this user as an admin?' unless User.admins.length == 1 %></td>
+          <td><%= link_to 'Delete user', user_path(user), method: :delete, confirm: 'Are you sure you want to delete this user? This cannot be undone.' unless User.admins.length == 1 %></td>
         </tr>
     <% end %>
   </table>
 
   <br><br>
-  <a class="subheader no-decor" data-toggle="collapse" data-target="#students"><h4>Students <i class="icon-collapse"></i></h4></a>
+  <a id="students" class="subheader no-decor" data-toggle="collapse" data-target="#students"><h4>Students <i class="icon-collapse"></i></h4></a>
   <table id="students" class="collapse fade in table table-striped">
     <tr>
       <th></th>
@@ -69,7 +93,7 @@
       <th></th>
     </tr>
     <% for user in User.students %>
-    <tr class="<%= user.admin ? 'success': '' %>">
+    <tr>
       <td><%= image_tag user.image, class: 'media-object-sm' unless user.image.blank?%></td>
       <td><%= user.first_name%></td>
       <td><%= user.last_name%></td>
@@ -81,6 +105,87 @@
     </tr>
     <% end %>
   </table>
+  <br>
+  <hr>
+  <h2 id="lesson-planning">Lesson Planning</h2>
+  <br>
+  <div class="row">
+    <div class="col-md-6 view">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Lesson Plan</h4>
+        </div>
+        <div class="panel-body">
+          <%= simple_form_for @lesson=Lesson.new do |f| %>
+              <%= f.input :name, label: 'Lesson Name', wrapper_html: {class: 'form-group'}, input_html: {class: 'form-control'} %>
+              <%= f.input :description, label: 'Brief description', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
+              <%= f.input :content, placeholder: 'This is the main content of your lesson. Use Markdown for HTML markup.', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
+              <%= f.input :date, label: 'Date of Lesson', wrapper_html: {class: 'form-group'}, input_html: {class: 'form-control'} %>
+
+              <div class="align-right">
+                <%= f.submit 'Save as Draft', class: 'btn btn-warning', name: 'draft' %>
+                <%= f.submit 'Publish', class: 'btn btn-success', name: 'publish' %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 view">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Preview</h4>
+        </div>
+        <div class="panel-body shoulder-margins" id="lesson-preview">
+          <div id="lesson-name-preview">
+            <!-- lesson preview here of title -->
+          </div>
+          <div id="lesson-desc-preview">
+            <!-- lesson preview here of description -->
+          </div>
+          <hr>
+          <div id="lesson-content-preview">
+            <!-- lesson preview here of content -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Lessons</h3>
+      <table id="students" class="collapse fade in table">
+        <tr style="background-color: white">
+          <th>Name</th>
+          <th>Date of lesson</th>
+          <th>Author</th>
+          <th># Codepens</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% for lesson in @lessons %>
+            <tr class="<%= lesson.published? ? 'success' : 'warning'%>">
+              <td><b><%=link_to lesson.name, lesson_path(lesson), class: 'black' %></b></td>
+              <td><%= lesson.date.strftime('%a %D')%></td>
+              <td><%= lesson.user.name%></td>
+              <td class="center"><%= lesson.codepens.length %></td>
+              <td><b><%= lesson.published? ? 'Published ' : 'Drafted' %></b> <%= time_ago_in_words lesson.updated_at %> ago</td>
+              <td>
+                <% if lesson.published? %>
+                    <%= link_to 'make draft', save_lesson_path(lesson), class: 'btn-sm btn-warning' %>
+                <% else %>
+                    <%= link_to 'publish it', publish_lesson_path(lesson), class: 'btn-sm btn-success' %>
+                <% end %>
+              </td>
+              <td class="center"><%= link_to 'edit', edit_lesson_path(lesson), class: 'btn-sm btn-primary' %></td>
+              <td><%= link_to 'delete', lesson_path(lesson), method: :delete, confirm: "Are you sure you want to delete this lesson? This cannot be undone.", class: 'btn-sm btn-primary' %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
 
 </div>

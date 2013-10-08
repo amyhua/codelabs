@@ -1,25 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="wide center clearfix">
+  <% unless @prev_lesson.nil? %>
+      <div class="pull-left">
+        <a href="<%= lesson_path(@prev_lesson)%>">
+          <div class="pull-left">
+            <i class="icon-chevron-left"></i>
+          </div>
+          <div class="pull-left indent-left narrow align-left">
+            <em>Prev Lesson</em>
+          </div>
+        </a>
+      </div>
+  <% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @lesson.name %>
-</p>
+  <% unless @next_lesson.nil? %>
+      <div class="pull-right">
+        <a href="<%= lesson_path(@next_lesson)%>">
+          <div class="pull-right">
+            <i class="icon-chevron-right"></i>
+          </div>
+          <div class="pull-right indent-right align-right narrow">
+            <em>Next Lesson</em>
+          </div>
 
-<p>
-  <b>Date:</b>
-  <%= @lesson.date %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @lesson.description %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @lesson.content %>
-</p>
+        </a>
+      </div>
+  <% end %>
+</div>
+<br>
+<br>
 
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+
+<div class="panel panel-default">
+  <div class="panel-body shoulder-margins">
+    <h2 class="text"><%= @lesson.name %></h2>
+    <h4 class="subheader text"><%= @lesson.date.strftime('%a %D')%></h4>
+    <p class="markdown text">
+      <%= h "\n" + @lesson.content %>
+    </p>
+  </div>
+</div>
+<br>
+<%= render 'lesson_nav' %>

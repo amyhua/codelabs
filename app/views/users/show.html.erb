@@ -22,7 +22,13 @@
 
 <div class="page" data-sidebar="#me">
 
-  <h1><i class="icon-user"></i> <%= @user.name%></h1>
+  <h1>
+    <% if @user.image.blank? %>
+        <i class="icon-user"> </i>
+    <% else %>
+        <%= image_tag @user.image, class: 'media-object inline' %>
+    <% end %>
+    <%= @user.name%></h1>
   <div id="codepens">
     <h3>Codepens <span class="badge"><%=@user.codepens.length%></span></h3>
     <div class="row">

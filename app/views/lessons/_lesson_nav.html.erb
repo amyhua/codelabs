@@ -1,0 +1,29 @@
+  <div class="wide center clearfix">
+    <% unless @prev_lesson.nil? %>
+        <div class="pull-left">
+          <a href="<%= lesson_path(@prev_lesson)%>">
+            <div class="pull-left">
+              <i class="icon-chevron-left"></i>
+            </div>
+            <div class="pull-left indent-left narrow align-left">
+              <em><%=@prev_lesson.name%></em>
+            </div>
+          </a>
+        </div>
+    <% end %>
+
+    <% unless @next_lesson.nil? %>
+        <div class="pull-right">
+          <a href="<%= lesson_path(@next_lesson)%>">
+            <div class="pull-right">
+              <i class="icon-chevron-right"></i>
+            </div>
+            <div class="pull-right indent-right align-right narrow">
+              <em><%=@next_lesson.name%></em>
+            </div>
+
+          </a>
+        </div>
+    <% end %>
+  </div>
+

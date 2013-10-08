@@ -97,3 +97,6 @@ Link.create! ([
     }
 
 ])
+
+User.destroy_all
+User.reset_pk_sequence

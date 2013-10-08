@@ -1,33 +1,51 @@
-<%= form_for(@lesson) do |f| %>
-  <% if @lesson.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+<div class="navbar-fixed-below-top">
+  <ul class="nav navbar-nav container">
+    <li>
+      <a id="1col-view" class="spaced"><i class="icon-list-ul"></i></a>
+    </li>
+    <li>
+      <a class="spaced" id="2col-view"><i class="icon-columns"></i></a>
+    </li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-6 view">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Lesson Plan</h4>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for @lesson do |f| %>
+            <%= f.input :name, label: 'Lesson Name', wrapper_html: {class: 'form-group'}, input_html: {class: 'form-control'} %>
+            <%= f.input :description, label: 'Brief description', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
+            <%= f.input :content, placeholder: 'This is the main content of your lesson. Use Markdown for HTML markup.', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
+            <%= f.input :date, label: 'Date of Lesson', wrapper_html: {class: 'form-group'}, input_html: {class: 'form-control'} %>
 
-      <ul>
-      <% @lesson.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+            <div class="align-right">
+              <a class="btn btn-warning" href="<%=save_lesson_path(@lesson)%>">Save as Draft</a>
+              <%= f.submit 'Publish', class: 'btn btn-success' %>
+            </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
+  <div class="col-md-6 view">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Preview</h4>
+      </div>
+      <div class="panel-body shoulder-margins" id="lesson-preview">
+        <div id="lesson-name-preview">
+          <!-- lesson preview here of title -->
+        </div>
+        <div id="lesson-desc-preview">
+          <!-- lesson preview here of description -->
+        </div>
+        <hr>
+        <div id="lesson-content-preview">
+          <!-- lesson preview here of content -->
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

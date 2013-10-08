@@ -20,7 +20,14 @@
     <div class="navbar-collapse collapse">
       <% if current_user %>
 
-          <span class="right btn btn-success"><i class="icon-user"></i> <%= current_user.first_name %> <%= current_user.last_name %></span>
+          <a href="<%=user_path(current_user) %>" class="pull-right btn subheader">
+            <% if current_user.image.blank? %>
+              <i style="color:white" class="icon-user"> </i>
+            <% else %>
+                <%= image_tag current_user.image, class: 'media-object-sm' %>
+            <% end %>
+             <%= current_user.first_name %> <%= current_user.last_name %>
+            </a>
 
       <% else %>
 
@@ -130,6 +137,8 @@
 
 
 <%= javascript_include_tag "application" %>
+<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 </body>
 </html>
 

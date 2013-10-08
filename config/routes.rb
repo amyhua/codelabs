@@ -25,7 +25,7 @@ Collaboration::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
   get 'class' => 'codepens#class_index', as: :class
-  get 'admin' => 'users#admin', as: :admin
+  get 'users/:id/admin' => 'users#admin', as: :admin
   get 'links' => 'links#index', as: :links
   post 'links' => 'links#create', as: :new_link
   get 'favorites' => 'codepens#favorites', as: :favorites
@@ -35,6 +35,10 @@ Collaboration::Application.routes.draw do
   get 'request_instructor_help' => 'users#request_instructor_help', as: :request_instructor_help
   get 'remove_as_admin' => 'users#remove_as_admin', as: :remove_admin
   get 'make_as_admin' => 'users#make_as_admin', as: :make_admin
+
+  get 'lessons/:id/save' => 'lessons#save_draft', as: :save_lesson
+  get 'lessons/:id/publish' => 'lessons#publish', as: :publish_lesson
+  post 'lessons/:id/draft' => 'lessons#save_draft', as: :draft_lesson
 
 
   resource :oauth do

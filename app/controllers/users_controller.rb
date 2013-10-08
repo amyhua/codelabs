@@ -120,7 +120,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'User was successfully deleted' }
+      format.html { render action: "index", notice: 'User was successfully deleted' }
     end
   end
   

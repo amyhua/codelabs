@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :codepen_username, :image
   attr_protected :admin
   has_many :providers, :class_name => "UserProvider", :dependent => :destroy
-  has_many :codepens
-  has_many :favorites
+  has_many :codepens, dependent: :delete_all
+  has_many :favorites, dependent: :delete_all
   has_many :questions
   has_many :answers
   accepts_nested_attributes_for :providers

@@ -44,15 +44,16 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    if @user.id == 1
-      @user.admin = true
-      message = 'You are the first user of this app! Your account is automatically designated as an Admin. Check your email for activation instructions.'
-    else
-      message = 'Registration successful! Check your email for activation instructions.'
-    end
 
     respond_to do |format|
       if @user.save
+        if @user.id == 1
+          @user.admin = true
+          message = 'You are the first user of this app! Your account is automatically designated as an Admin. Check your email for activation instructions.'
+        else
+          message = 'Registration successful! Check your email for activation instructions.'
+        end
+        @user.save
         format.html { redirect_to(:back, :notice => message) }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else

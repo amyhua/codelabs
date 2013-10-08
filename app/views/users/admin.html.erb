@@ -28,6 +28,7 @@
       <li>make other users an admin</li>
       <li>create, edit, and delete lessons</li>
       <li>delete users</li>
+      <li>delete questions and answers</li>
     </ul>
   </p>
   <br><br>
@@ -53,8 +54,8 @@
   </div>
   <br>
 
-  <a id="admins" class="subheader no-decor" data-toggle="collapse" data-target="#admins"><h4>Admins <i class="icon-collapse"></i></h4></a>
-  <table id="admins" class="collapse fade in table table-striped">
+  <a id="admins" class="subheader no-decor" data-toggle="collapse" data-target="#collapse-admins"><h4>Admins <i class="icon-collapse"></i></h4></a>
+  <table id="collapse-admins" class="collapse fade in table table-striped">
     <tr>
       <th></th>
       <th>First Name</th>
@@ -78,10 +79,11 @@
         </tr>
     <% end %>
   </table>
+  <small class="subheader">Note: If there is only one admin, the admin cannot remove him/herself.</small>
 
   <br><br>
-  <a id="students" class="subheader no-decor" data-toggle="collapse" data-target="#students"><h4>Students <i class="icon-collapse"></i></h4></a>
-  <table id="students" class="collapse fade in table table-striped">
+  <a id="students" class="subheader no-decor" data-toggle="collapse" data-target="#collapse-students"><h4>Students <i class="icon-collapse"></i></h4></a>
+  <table id="collapse-students" class="collapse fade in table table-striped">
     <tr>
       <th></th>
       <th>First Name</th>
@@ -172,7 +174,7 @@
               <td><%= lesson.user.name%></td>
               <td class="center"><%= lesson.codepens.length %></td>
               <td><b><%= lesson.published? ? 'Published ' : 'Drafted' %></b> <%= time_ago_in_words lesson.updated_at %> ago</td>
-              <td>
+              <td style="width: 100px">
                 <% if lesson.published? %>
                     <%= link_to 'make draft', save_lesson_path(lesson), class: 'btn-sm btn-warning' %>
                 <% else %>

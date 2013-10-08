@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_login_from_http_basic, :only => [:login_from_http_basic]
   skip_before_filter :require_login, :only => [:index, :new, :create, :activate, :login_from_http_basic]
+  before_filter :require_admin, only: [:admin, :remove_as_admin, :make_as_admin, :destroy]
   # GET /users
   # GET /users.xml
   def index

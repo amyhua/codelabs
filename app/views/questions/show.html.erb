@@ -1,11 +1,3 @@
-<div class="navbar-fixed-below-top">
-  <ul class="nav navbar-nav container">
-    <li>
-      <%= link_to 'Back', questions_path %>
-    </li>
-  </ul>
-</div>
-
 <div class="page three-fourths" data-sidebar="#q-n-a">
 
 
@@ -20,8 +12,10 @@
         </a>
         <div class="media-body">
           <%= simple_format @question.detail %>
+
           <small class="media-heading">-- <%= link_to @question.user.name, user_path(@question.user)%>
             <%= time_ago_in_words(@question.updated_at) %> ago</small><br>
+
           <% if @question.user == current_user %>
               <!-- edit question -->
           <% end %>
@@ -29,26 +23,33 @@
       </div>
     </div>
   </div>
+  <div class="align-right">
+    <%= link_to 'edit question', edit_question_path(@question) if current_user == @question.user %><br>
+    <%= link_to 'delete question', question_path(@question), method: :delete, confirm: "Are you sure you want to delete this question?" if current_user.admin %>
+  </div>
 
   <h4>Answers <span class="badge"><h4><%= @question.answers.length%></h4></span></h4>
   <% for answer in @question.answers %>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="media">
-          <a class="pull-left" href="<%= user_path(current_user) %>">
-            <img class="media-object" src="<%= answer.user.image%>" alt="<%=answer.user.name%>">
-          </a>
-          <div class="media-body">
-            <%= simple_format answer.content %>
-            <div class="align-right">
-              <small class="media-heading">-- <%= link_to answer.user.name, user_path(answer.user)%>
-                <%= time_ago_in_words(answer.updated_at) %> ago</small>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <a class="pull-left" href="<%= user_path(current_user) %>">
+              <img class="media-object" src="<%= answer.user.image%>" alt="<%=answer.user.name%>">
+            </a>
+            <div class="media-body">
+              <%= simple_format answer.content %>
+              <div class="align-right">
+                <small class="media-heading">-- <%= link_to answer.user.name, user_path(answer.user)%>
+                  <%= time_ago_in_words(answer.updated_at) %> ago<br>
+                  <%= link_to 'delete answer', question_answer_path(@question, answer), method: :delete, confirm: "Are you sure you want to delete this answer?" if current_user.admin %>
+                </small>
+
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
-    </div>
 
 
   <% end %>
@@ -77,4 +78,12 @@
   </div>
 
 
+</div>
+
+<div class="navbar-fixed-below-top">
+  <ul class="nav navbar-nav container">
+    <li>
+      <%= link_to 'Back', questions_path %>
+    </li>
+  </ul>
 </div>

@@ -11,4 +11,10 @@ class AnswersController < ApplicationController
       redirect_to :back, alert: 'Your answer was not submitted. Answers cannot be blank.'
     end
   end
+
+  def destroy
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    redirect_to :back, notice: 'This answer was successfully deleted.'
+  end
 end

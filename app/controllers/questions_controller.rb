@@ -36,6 +36,9 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @question = Question.find(params[:id])
+    unless @question.user == current_user
+      redirect_to :back, alert: 'Sorry, you cannot edit a question you did not create.'
+    end
   end
 
   # POST /questions
@@ -78,8 +81,9 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to questions_url }
+      format.html { redirect_to :back, notice: 'This question was successfully deleted.' }
       format.json { head :no_content }
     end
   end
+
 end

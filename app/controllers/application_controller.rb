@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   
   protected
   
+
+  def require_admin
+    unless current_user.admin
+      redirect_to :back, alert: 'You must be an admin to do that. Please request admin access from a current admin.'
+    end
+  end
   def not_authenticated
     redirect_to root_path, :alert => "Please login first."
   end

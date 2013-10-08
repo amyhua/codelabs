@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
-  # GET /lessons
-  # GET /lessons.json
+  before_filter :require_admin, except: [:index, :show]
+
   def index
     @lessons = Lesson.all
     comics = [

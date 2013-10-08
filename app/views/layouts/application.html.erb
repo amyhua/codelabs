@@ -20,6 +20,7 @@
     <div class="navbar-collapse collapse">
       <% if current_user %>
 
+          <a class="pull-right" href="<%=logout_path%>"><i class="icon-off nav-icon"> </i></a>
           <a href="<%=user_path(current_user) %>" class="pull-right btn subheader">
             <% if current_user.image.blank? %>
               <i style="color:white" class="icon-user"> </i>

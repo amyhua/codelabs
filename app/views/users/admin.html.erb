@@ -2,57 +2,85 @@
   <h1>Admin Dashboard</h1>
   <p>All admins have access to the admin dashboard. Admins can:
     <ul class="indent-left">
-      <li>receive emails from users requesting 1-on-1 instructor help</li>
-      <li>make other users admin</li>
-      <li>create/edit/delete lessons</li>
-      <li>edit/delete users</li>
+      <li>receive email and/or SMS alerts from users requesting 1-on-1 instructor help</li>
+      <li>make other users an admin</li>
+      <li>create, edit, and delete lessons</li>
+      <li>delete users</li>
     </ul>
   </p>
   <br><br>
-  <h3>Admins</h3>
-  <table class="table table-striped">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">Admin Settings</h4>
+    </div>
+    <div class="panel-body">
+      <%= simple_form_for current_user do |f| %>
+          <%= f.input :receive_email, label: 'Receive email alerts for instructor help requests' %>
+          <%= f.input :receive_sms, label: 'Receive SMS alerts for instructor help requests' %>
+            <%= f.input :phone, label: '10-digit Phone Number (no dashes or spaces)',
+                        wrapper_html: {class: 'form-group'},
+                        input_html: {class: 'form-control validate[custom[tendigits]] validate[custom[integer]]',
+                                     maxlength: 10}%>
+          <div class="align-right">
+            <%= f.submit 'Update Admin Settings', class: 'btn btn-success' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+
+  <a class="subheader no-decor" data-toggle="collapse" data-target="#admins"><h4>Admins <i class="icon-collapse"></i></h4></a>
+  <table id="admins" class="collapse fade in table table-striped">
     <tr>
       <th></th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Codepen Username</th>
-      <th>Admin?</th>
-      <th>Receive instructor<br>help requests?</th>
+      <th>Email</th>
+      <th>Instructor help requests receive:</th>
+      <th></th>
       <th></th>
     </tr>
     <% for user in User.admins %>
         <tr class="<%= user.admin ? 'success': '' %>">
-          <td><%= image_tag user.image, class: 'media-object-sm'%></td>
+          <td><%= image_tag user.image, class: 'media-object-sm'  unless user.image.blank?%></td>
           <td><%= user.first_name%></td>
           <td><%= user.last_name%></td>
           <td><%= user.codepen_username%></td>
-          <td><%= user.admin%></td>
-          <td>Yes</td>
-          <td><%= link_to 'Remove as admin', '#'%></td>
+          <td><%= user.email %></td>
+          <td><%= user.receive_sms ? 'SMS alerts' : 'No SMS alerts'%><br><%=user.receive_email ? 'Email alerts' : 'No email alerts'%></td>
+          <td><%= link_to 'Remove admin', remove_admin_path(id: user.id), confirm: 'Are you sure you want to remove this user as an admin?' %></td>
+          <td><%= link_to 'Delete user', user_path(user), method: :delete, confirm: 'Are you sure you want to delete this user? This cannot be undone.' %></td>
         </tr>
     <% end %>
   </table>
 
   <br><br>
-  <h3>Students</h3>
-  <table class="table table-striped">
+  <a class="subheader no-decor" data-toggle="collapse" data-target="#students"><h4>Students <i class="icon-collapse"></i></h4></a>
+  <table id="students" class="collapse fade in table table-striped">
     <tr>
       <th></th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Codepen Username</th>
+      <th>Email</th>
+      <th>Joined</th>
+      <th></th>
       <th></th>
     </tr>
     <% for user in User.students %>
     <tr class="<%= user.admin ? 'success': '' %>">
-      <td><%= image_tag user.image, class: 'media-object-sm'%></td>
+      <td><%= image_tag user.image, class: 'media-object-sm' unless user.image.blank?%></td>
       <td><%= user.first_name%></td>
       <td><%= user.last_name%></td>
       <td><%= user.codepen_username%></td>
-      <td><%= user.admin%></td>
-      <td><%= link_to 'Make an admin', '#'%></td>
+      <td><%= user.email %></td>
+      <td><%= time_ago_in_words user.created_at %> ago</td>
+      <td><%= link_to 'Make admin', make_admin_path(id: user.id), confirm: 'Are you sure you want to make this user an admin?' %></td>
+      <td><%= link_to 'Delete user', user_path(user), method: :delete, confirm: 'Are you sure you want to delete this user? This cannot be undone.' %></td>
     </tr>
     <% end %>
   </table>
+
 
 </div>

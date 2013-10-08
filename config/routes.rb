@@ -33,6 +33,8 @@ Collaboration::Application.routes.draw do
   match 'unfavorite' => 'codepens#unfavorite', :as => :unfavorite_codepen
 
   get 'request_instructor_help' => 'users#request_instructor_help', as: :request_instructor_help
+  get 'remove_as_admin' => 'users#remove_as_admin', as: :remove_admin
+  get 'make_as_admin' => 'users#make_as_admin', as: :make_admin
 
 
   resource :oauth do

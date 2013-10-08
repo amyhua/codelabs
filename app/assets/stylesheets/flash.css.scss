@@ -1,12 +1,13 @@
 .float-center {
   position: absolute;
-  z-index: 100;
   top: 50px;
-  width: auto;
+  width: 100%;
   text-align: center;
 }
 .flash {
   display: inline-block;
+  position: relative;
+  z-index: 100;
   margin: 10px;
   color: white;
   opacity: 0.9;

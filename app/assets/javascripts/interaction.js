@@ -55,6 +55,7 @@ $(document).ready(function(){
         }
     })
 
+    // Request instructor help ->> SMS and/or Email to instructors
     $('#request_instructor_help').on('click', function(){
         $.ajax({
             type: "GET",
@@ -62,6 +63,27 @@ $(document).ready(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
             dataType: "json",
             success: $('#request-status').html('<br><br>Thanks for asking! We got your request and are on our way!<br><br>')
+        });
+    })
+
+    $('.remove_as_admin').on('click', function(){
+        $.ajax({
+            type: "POST",
+            url: "/remove_as_admin",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            dataType: "json",
+            data: {id: $(this).data('user')},
+            success: confirm('Are you sure you want to remove this user as admin?')
+        });
+    })
+    $('.make_as_admin').on('click', function(){
+        $.ajax({
+            type: "POST",
+            url: "/make_as_admin",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            dataType: "json",
+            data: {id: $(this).data('user')},
+            success: confirm('Are you sure you want to make this user an admin?')
         });
     })
 

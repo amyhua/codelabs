@@ -21,6 +21,10 @@
                     "regex": "/*.(jpg|jpeg|gif|png)",
                     "alertText": "* Invalid image URL. Must end in .jpg, .jpeg, .gif, or .png"
                 },
+                "tendigits": {
+                    "regex": /[0-9]{10}/,
+                    "alertText": "* Must be 10 digits long."
+                },
                 "dateRange": {
                     "regex": "none",
                     "alertText": "* Invalid ",

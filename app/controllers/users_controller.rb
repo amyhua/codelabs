@@ -66,10 +66,31 @@ class UsersController < ApplicationController
     render nothing: true
   end
 
+  def remove_as_admin
+    @user = User.find(params[:id])
+    @user.admin = false
+    if @user.save
+      redirect_to :back, notice: "User was successfully removed as admin."
+    else
+      redirect_to :back, alert: "User was not removed as admin. Something went wrong."
+    end
+  end
+
+  def make_as_admin
+    @user = User.find(params[:id])
+    @user.admin = true
+    if @user.save
+      redirect_to :back, notice: "User was successfully made an admin."
+    else
+      redirect_to :back, alert: "User was not made an admin. Something went wrong."
+    end
+  end
+
   # PUT /users/1
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    @user.phone = @user.phone.sub('-','').sub(' ','')
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -89,8 +110,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to :back, notice: 'User was successfully deleted' }
     end
   end
   

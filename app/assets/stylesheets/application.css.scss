@@ -28,9 +28,12 @@
   padding-right: 20px;
 }
 .indent-left {
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
+.no-decor:hover {
+  text-decoration: none;
+}
 a.active-link {
   border-bottom: solid 3px;
 }

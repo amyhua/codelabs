@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  before_filter :require_login, except: [:index]
   before_filter :require_admin, except: [:index, :show]
 
   def index

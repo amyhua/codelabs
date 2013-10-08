@@ -27,6 +27,7 @@ Collaboration::Application.routes.draw do
   get 'class' => 'codepens#class_index', as: :class
   get 'users/:id/admin' => 'users#admin', as: :admin
   get 'links' => 'links#index', as: :links
+  get 'about' => 'application#about', as: :about
   post 'links' => 'links#create', as: :new_link
   get 'favorites' => 'codepens#favorites', as: :favorites
   match 'favorite' => 'codepens#favorite', :as => :favorite_codepen

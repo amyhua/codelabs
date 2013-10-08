@@ -1,6 +1,6 @@
 class CodepensController < ApplicationController
-  # GET /codepens
-  # GET /codepens.json
+  before_filter :require_login
+
   def class_index
     @codepens = Codepen.all
 

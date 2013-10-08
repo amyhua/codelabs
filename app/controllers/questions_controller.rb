@@ -81,7 +81,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'This question was successfully deleted.' }
+      format.html { render action: "index", notice: 'Question was successfully deleted.' }
       format.json { head :no_content }
     end
   end

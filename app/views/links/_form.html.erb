@@ -1,4 +1,4 @@
-<%= simple_form_for @link, html: {class: 'narrow form'} do |f| %>
+<%= simple_form_for @link=Link.new, html: {class: 'narrow form'} do |f| %>
     <%= f.input :title, label: false, placeholder: 'Website Title',
                 input_html: {class: 'validate[required] form-control'},
                 wrapper_html: { class: 'form-group' } %>

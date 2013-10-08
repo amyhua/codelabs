@@ -96,6 +96,7 @@
   </div>
 </div><!-- /.modal -->
 
+<!-- new codepen submission form modal -->
 <div class="modal fade in" id="modal-submit-code" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -106,6 +107,23 @@
       <div class="modal-body">
         <div class="wrapper">
           <%= render 'codepens/form' %>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div><!-- /.modal -->
+
+<!-- new link form modal -->
+<div class="modal fade in" id="modal-add-link" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        Share a link
+      </div>
+      <div class="modal-body">
+        <div class="wrapper qa-form">
+          <%= render 'links/form' %>
         </div>
       </div>
     </div><!-- /.modal-content -->

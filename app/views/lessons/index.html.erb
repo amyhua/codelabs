@@ -1,3 +1,4 @@
+<% if current_user %>
 <div id="subnav" class="navbar-fixed-below-top" role="navigation">
   <div class="container">
     <ul class="nav navbar-nav">
@@ -10,7 +11,7 @@
     </ul>
   </div>
 </div>
-
+<% end %>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="page" data-sidebar="#lessons">
@@ -26,12 +27,15 @@
           enough to design your own website and understand how to continue
           improving your skills on your own.<br><br>
           You are in for a world of fun.<br><br>
+          Sign up for a <a href="http://codepen.io" target="_newtab">Codepen.io</a> account and get started.<br><br>
 
         </p>
         <p><a data-toggle="modal" data-target="#modal-signup" class="btn btn-primary btn-lg">Get Started »</a></p>
       </div>
     </div>
   <% end %>
+
+  <% if current_user %>
 
       <div class="row">
         <div class="col-lg-12">
@@ -84,5 +88,5 @@
       </div>
   <% end %>
 
-    <div class="vimiumReset vimiumHUD" style="right: 150px; opacity: 0; display: none;"></div>
+  <% end %>
 </div>

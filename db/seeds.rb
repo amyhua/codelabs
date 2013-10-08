@@ -57,6 +57,12 @@ Link.create! ([
      url: 'http://github.com',
      image: 'http://www.wakanda.org/sites/default/files/blog/blog-github.png'
     },
+    {category_id: 3,
+     title: 'Codepen',
+     description: "View, edit, favorite, and collect open-source code on Codepen! Codepen showcases some awesome work from great developers who allow you to probe, share, and edit their codes as you wish!",
+     url: 'http://codepen.io',
+     image: 'http://blog.codepen.io/wp-content/uploads/2012/07/Demo.jpg'
+    },
     {category_id: 1,
      title: 'Code Academy',
      description: "\"Codecademy is the easiest way to learn how to code. It's interactive, fun, and you can do it with your friends.\" Learn everything from Web Fundamentals to Ruby, jQuery, Javascript, PHP, APIs, etc. through Codeacademy exercises and projects. See all their non-tracked courses, too (http://www.codecademy.com/courses/lang/all)",

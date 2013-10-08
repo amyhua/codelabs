@@ -11,19 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-  	<%= f.label :email %><br />
-    <%= f.text_field :email %>
+
+    <div class="form-group">
+      Current Image: <%= image_tag @user.image, class: 'media-object' %><br>
+      <%= f.label :image %><br />
+      <%= f.text_field :image, class: 'form-control validate[custom[url],custom[imageurl]]' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :codepen_username %><br />
+      <%= f.text_field :codepen_username, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label 'New password' %><br />
+    <%= f.password_field :password, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control validate[equals[user_password]]' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Update user settings', class: 'btn btn-default' %>
   </div>
 <% end %>

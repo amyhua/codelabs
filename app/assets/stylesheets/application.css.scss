@@ -94,3 +94,18 @@ ul {
     font-family: 'Courier New', Courier, Consolas, Monaco, monospace;
   }
 }
+// splash
+
+#splash{
+    background-image: url('/assets/classroom.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: white;
+    background-size: 100%;
+  position: relative;
+  z-index: -5;
+  > div {
+    opacity: 0.9;
+
+  }
+}

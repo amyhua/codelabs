@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless User.find(params[:id]) = current_user
+    unless User.find(params[:id]) == current_user
       redirect_to :back, alert: 'Please login as this user first.'
     end
   end

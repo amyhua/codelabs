@@ -13,9 +13,15 @@
 
           <p class="indent-left pull-left">
             by
-            <%= link_to "#{codepen.user.name}", user_path(codepen.user) %>
+            <%= link_to "#{codepen.user.name}", user_path(codepen.user) %> |
             <%= time_ago_in_words(codepen.updated_at) %> ago
             <br>
+            <% unless codepen.lesson.nil? %>
+            <span>
+              <em>Lesson:</em> <%= codepen.lesson.name %>
+              <br>
+            </span>
+            <% end %>
             <b><%= codepen.title %></b>
             <br>
             <%= codepen.note %>

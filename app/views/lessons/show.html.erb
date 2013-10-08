@@ -1,34 +1,26 @@
-<div class="wide center clearfix">
+<div class="navbar-fixed-below-top">
+  <div class="container">
   <% unless @prev_lesson.nil? %>
-      <div class="pull-left">
-        <a href="<%= lesson_path(@prev_lesson)%>">
-          <div class="pull-left">
-            <i class="icon-chevron-left"></i>
-          </div>
-          <div class="pull-left indent-left narrow align-left">
-            <em>Prev Lesson</em>
-          </div>
-        </a>
-      </div>
-  <% end %>
 
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="<%= lesson_path(@prev_lesson)%>">
+              <i class="icon-chevron-left"></i> prev lesson
+            </a>
+          </li>
+      </ul>
+  <% end %>
   <% unless @next_lesson.nil? %>
-      <div class="pull-right">
-        <a href="<%= lesson_path(@next_lesson)%>">
-          <div class="pull-right">
-            <i class="icon-chevron-right"></i>
-          </div>
-          <div class="pull-right indent-right align-right narrow">
-            <em>Next Lesson</em>
-          </div>
-
-        </a>
-      </div>
+<ul class="nav navbar-nav pull-right">
+        <li>
+          <a href="<%= lesson_path(@next_lesson)%>">
+            next lesson <i class="icon-chevron-right"></i>
+          </a>
+        </li>
+      </ul>
   <% end %>
+  </div>
 </div>
-<br>
-<br>
-
 
 
 <div class="panel panel-default">

@@ -1,6 +1,14 @@
-<div class="page three-fourths" data-sidebar="#q-n-a">
+<div class="navbar-fixed-below-top">
+  <ul class="nav navbar-nav container">
+    <li>
+      <a href="<%= questions_path%>">
+        <i class="icon-chevron-left"></i> Questions
+      </a>
+    </li>
+  </ul>
+</div>
 
-
+<div class="page" data-sidebar="#q-n-a">
   <h2><%=@question.name %></h2>
 
   <div class="panel panel-default">
@@ -11,7 +19,9 @@
           <img class="media-object" src="<%= @question.user.image%>" alt="<%=@question.user.name%>">
         </a>
         <div class="media-body">
-          <%= simple_format @question.detail %>
+          <p class="markdown">
+            <%= h "\n" + @question.detail %>
+          </p>
 
           <small class="media-heading">-- <%= link_to @question.user.name, user_path(@question.user)%>
             <%= time_ago_in_words(@question.updated_at) %> ago</small><br>
@@ -74,16 +84,8 @@
   </div>
   <br><br>
   <div>
-    <%= link_to 'Back', questions_path %>
   </div>
 
 
 </div>
 
-<div class="navbar-fixed-below-top">
-  <ul class="nav navbar-nav container">
-    <li>
-      <%= link_to 'Back', questions_path %>
-    </li>
-  </ul>
-</div>

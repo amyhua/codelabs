@@ -28,9 +28,10 @@
     <% else %>
         <%= image_tag @user.image, class: 'media-object inline' %>
     <% end %>
-    <%= @user.name%></h1>
+    <%= @user.name%>
+  </h1>
   <div id="codepens">
-    <h3>Codepens <span class="badge"><%=@user.codepens.length%></span></h3>
+    <h3>class codepens <span class="subheader">(@<%=@user.codepen_username%>)</span> <span class="badge"><%=@user.codepens.length%></span></h3>
     <div class="row">
       <script async src="http://codepen.io/assets/embed/ei.js"></script>
       <% for codepen in @user.codepens %>

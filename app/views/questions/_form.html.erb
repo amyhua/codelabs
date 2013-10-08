@@ -16,8 +16,11 @@
   </div>
   <div class="form-group">
     <%= f.text_area :detail, placeholder: 'Details', class: 'form-control' %>
+    <small>
+      Content can be edited using <a href="http://daringfireball.net/projects/markdown/basics" target="_newtab">Markdown</a>.
+    </small>
   </div>
   <div class="actions">
-    <%= f.submit 'Submit Question', class: 'btn btn-default' %>
+    <%= f.submit 'Submit Question', class: 'btn btn-warning' %>
   </div>
 <% end %>

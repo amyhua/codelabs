@@ -3,6 +3,8 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.all
+    @past_lessons = Lesson.past
+    @upcoming_lessons = Lesson.upcoming
     comics = [
         'http://imgs.xkcd.com/comics/compiling.png',
         'http://imgs.xkcd.com/comics/windows_7.png',

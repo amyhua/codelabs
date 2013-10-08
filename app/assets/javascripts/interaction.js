@@ -134,6 +134,20 @@ $(document).ready(function(){
         $('.markdown').html(content_html);
     }
 
+    if ($('textarea#question_detail.preview').length) {
+        var content = $('textarea#question_detail.preview').val();
+        var content_html = converter.makeHtml(content);
+        $('#question-detail-preview').html(content_html);
+
+        $('textarea#question_detail.preview').on('keyup', function(){
+            console.log('key')
+            var content = $(this).val();
+            var content_html = converter.makeHtml(content);
+            $('#question-detail-preview').html(content_html);
+        })
+    }
+    // TODO: refactor
+
 
 
 

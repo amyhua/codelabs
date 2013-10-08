@@ -121,7 +121,10 @@
           <%= simple_form_for @lesson=Lesson.new do |f| %>
               <%= f.input :name, label: 'Lesson Name', wrapper_html: {class: 'form-group'}, input_html: {class: 'form-control'} %>
               <%= f.input :description, label: 'Brief description', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
-              <%= f.input :content, placeholder: 'This is the main content of your lesson. Use Markdown for HTML markup.', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
+              <%= f.input :content, placeholder: 'This is the main content of your lesson.', wrapper_html: {class: 'form-group'}, input_html: {class: 'brief form-control'} %>
+              <small>
+                Content can be edited using <a href="http://daringfireball.net/projects/markdown/basics" target="_newtab">Markdown</a>.
+              </small><br><br>
               <%= f.input :date, label: 'Date of Lesson', wrapper_html: {class: 'form-group'}, input_html: {class: 'form-control'} %>
 
               <div class="align-right">

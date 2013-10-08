@@ -1,8 +1,22 @@
+<div id="subnav" class="navbar-fixed-below-top" role="navigation">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="#upcoming">Current & Upcoming</a>
+      </li>
+      <li>
+        <a href="#past">Past</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="page" data-sidebar="#lessons">
   <% unless current_user %>
   <div class="jumbotron">
-      <div class="container">
+      <div>
         <h1>Hello, class!</h1>
         <p>
           Welcome to your first dive into the world of web design.
@@ -22,29 +36,53 @@
       <div class="row">
         <div class="col-lg-12">
           <h2>Lessons in Web Design!</h2><br>
-          <%= image_tag @comic %>
-          <br><br>
+
+          <div class="jumbotron">
+            <div>
+              <% first_lesson = @upcoming_lessons.first %>
+              <h4 class="subheader"><i class="icon-beaker"> </i><%= first_lesson.date.strftime('%a %D')%></h4>
+              <h3><%= link_to first_lesson.name, lesson_path(first_lesson) %></h3>
+              <p>
+                <%= first_lesson.description %><br><br>
+                <a class="btn btn-default" href="<%= lesson_path(first_lesson)%>">View lesson »</a>
+              </p><br>
+              <%= image_tag @comic %>
+            </div>
+          </div>
+
         </div>
-      <% for lesson in @lessons %>
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-md-1">
+      </div>
+
+  <h3 id="upcoming">Current & Upcoming lessons</h3>
+  <% for lesson in @upcoming_lessons %>
+    <div class="row">
+            <div class="col-sm-1">
               <h1><i class="icon-beaker"></i></h1>
             </div>
-            <div class="col-md-11">
+            <div class="col-sm-10">
               <h4><span class="subheader"><%= lesson.date.strftime('%a %D')%></span><br><%= link_to lesson.name, lesson_path(lesson)%></h4>
               <p><%= lesson.description%></p>
               <p><a class="btn btn-default" href="<%= lesson_path(lesson)%>">View lesson »</a></p>
               <br>
             </div>
-          </div>
-        </div>
-      <% end %>
-
-      </div>
+    </div>
+  <% end %>
 
       <hr>
-
+  <h3 id="past">Past lessons</h3>
+  <% for lesson in @past_lessons %>
+      <div class="row">
+        <div class="col-sm-1">
+          <h1><i class="icon-beaker"></i></h1>
+        </div>
+        <div class="col-sm-10">
+          <h4><span class="subheader"><%= lesson.date.strftime('%a %D')%></span><br><%= link_to lesson.name, lesson_path(lesson)%></h4>
+          <p><%= lesson.description%></p>
+          <p><a class="btn btn-default" href="<%= lesson_path(lesson)%>">View lesson »</a></p>
+          <br>
+        </div>
+      </div>
+  <% end %>
 
     <div class="vimiumReset vimiumHUD" style="right: 150px; opacity: 0; display: none;"></div>
 </div>

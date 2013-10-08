@@ -63,6 +63,7 @@
       <th>Codepen Username</th>
       <th>Email</th>
       <th>Instructor help requests receive:</th>
+      <th>Last active</th>
       <th></th>
       <th></th>
     </tr>
@@ -74,6 +75,7 @@
           <td><%= user.codepen_username%></td>
           <td><%= user.email %></td>
           <td><%= user.receive_sms ? 'SMS alerts' : 'No SMS alerts'%><br><%=user.receive_email ? 'Email alerts' : 'No email alerts'%></td>
+          <td><%= time_ago_in_words user.last_activity_at %> ago</td>
           <td><%= link_to 'Remove admin', remove_admin_path(id: user.id), confirm: 'Are you sure you want to remove this user as an admin?' unless User.admins.length == 1 %></td>
           <td><%= link_to 'Delete user', user_path(user), method: :delete, confirm: 'Are you sure you want to delete this user? This cannot be undone.' unless User.admins.length == 1 %></td>
         </tr>
@@ -91,6 +93,7 @@
       <th>Codepen Username</th>
       <th>Email</th>
       <th>Joined</th>
+      <th>Last active</th>
       <th></th>
       <th></th>
     </tr>
@@ -102,6 +105,7 @@
       <td><%= user.codepen_username%></td>
       <td><%= user.email %></td>
       <td><%= time_ago_in_words user.created_at %> ago</td>
+      <td><%= time_ago_in_words user.last_activity_at %> ago</td>
       <td><%= link_to 'Make admin', make_admin_path(id: user.id), confirm: 'Are you sure you want to make this user an admin?' %></td>
       <td><%= link_to 'Delete user', user_path(user), method: :delete, confirm: 'Are you sure you want to delete this user? This cannot be undone.' %></td>
     </tr>

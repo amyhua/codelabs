@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.14'
 gem 'simple_form'
 gem 'font-awesome-rails'
-gem 'unicorn'
 # Deploy with Capistrano
 # gem 'capistrano'
 

@@ -55,4 +55,14 @@ $(document).ready(function(){
         }
     })
 
+    $('#request_instructor_help').on('click', function(){
+        $.ajax({
+            type: "GET",
+            url: "/request_instructor_help",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            dataType: "json",
+            success: $('#request-status').html('<br><br>Thanks for asking! We got your request and are on our way!<br><br>')
+        });
+    })
+
 });

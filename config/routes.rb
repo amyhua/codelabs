@@ -26,10 +26,13 @@ Collaboration::Application.routes.draw do
 
   get 'class' => 'codepens#class_index', as: :class
   get 'admin' => 'users#admin', as: :admin
-  get 'links' => 'application#links', as: :links
+  get 'links' => 'links#index', as: :links
+  post 'links' => 'links#create', as: :new_link
   get 'favorites' => 'codepens#favorites', as: :favorites
   match 'favorite' => 'codepens#favorite', :as => :favorite_codepen
   match 'unfavorite' => 'codepens#unfavorite', :as => :unfavorite_codepen
+
+  get 'request_instructor_help' => 'users#request_instructor_help', as: :request_instructor_help
 
 
   resource :oauth do

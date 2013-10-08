@@ -57,6 +57,13 @@ class UsersController < ApplicationController
 
   def admin
     @lessons = Lesson.all
+    @users = User.all
+  end
+
+  def request_instructor_help
+    admins = User.where(admin: true)
+    PhoneMailer.instructor_help_email(current_user,admins).deliver
+    render nothing: true
   end
 
   # PUT /users/1

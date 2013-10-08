@@ -7,11 +7,11 @@
     </div>
     <div class="form-group">
       <%= f.text_field :codepen_username, placeholder: 'Your Codepen Username', class: 'validate[required] form-control' %>
-      <small>Don't have one? Sign up at <a href="http://codepen.io">codepen.io.</a></small>
+      <small>Don't have one? Sign up at <a href="http://codepen.io" target="_newtab">codepen.io.</a></small>
     </div>
     <div class="form-group">
-      <%= f.text_field :image, placeholder: 'Image URL', class: 'validate[required] validate[custom[email]] form-control' %>
-      <small>Provide an image URL (http://www.pictures.com/myself.jpg) with a .jpg, .jpeg, .png, or .gif extension that will show next to your username.</small>
+      <%= f.text_field :image, placeholder: 'Image URL (http://...)', class: 'validate[required] validate[custom[url]] validate[custom[imageurl]] form-control' %>
+      <small>Provide an image URL with a .jpg, .jpeg, .png, or .gif extension that will show next to your username.</small>
     </div>
     <div class="form-group">
       <%= f.text_field :email, placeholder: 'Email', class: 'validate[required] validate[custom[email]] form-control' %>

@@ -1,0 +1,14 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+.link-img {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-height: 100px;
+}
+
+.shoulder-pads {
+    padding-left: 20px;
+    padding-right: 20px;
+}

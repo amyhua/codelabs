@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007083355) do
+ActiveRecord::Schema.define(:version => 20131008031012) do
 
   create_table "answers", :force => true do |t|
     t.text     "content"
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(:version => 20131007083355) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "links", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "image"
+    t.text     "description"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "links", ["category_id"], :name => "index_links_on_category_id"
+
   create_table "pages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -111,6 +123,10 @@ ActiveRecord::Schema.define(:version => 20131007083355) do
     t.string   "last_name"
     t.string   "codepen_username"
     t.string   "image"
+    t.string   "phone"
+    t.string   "carrier"
+    t.boolean  "receive_sms"
+    t.boolean  "receive_email"
   end
 
   add_index "users", ["activation_code"], :name => "index_users_on_activation_code"

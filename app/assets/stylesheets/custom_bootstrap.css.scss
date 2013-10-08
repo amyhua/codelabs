@@ -4,7 +4,7 @@
   padding-left: 150px;
 }
 .container.body{
-  padding-top: 60px;
+  padding-top: 90px;
 }
 a {
   cursor: pointer;
@@ -27,5 +27,10 @@ h1,h2,h3,h4,h5,h6 {
 
 .media-object{
   max-width: 64px;
+  border-radius: 3px;
+}
+
+.media-object-sm {
+  max-width: 30px;
   border-radius: 3px;
 }

@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  default_scope order('last_name')
+  scope :admins, -> {where(admin: true)}
+  scope :students, -> {where(admin: false)}
+
   attr_accessible :email, :password, :password_confirmation, :providers_attributes,
                   :first_name, :last_name, :codepen_username, :image
   attr_protected :admin

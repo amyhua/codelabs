@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
-  attr_accessible :color, :name
-  has_many :events
+  attr_accessible :name, :color
+  has_many :links
 end

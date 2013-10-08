@@ -1,0 +1,68 @@
+<div class="navbar-fixed-below-top">
+  <ul class="nav navbar-nav container">
+    <li>
+      <a data-toggle="modal" data-target="#modal-add-link"><b>Add a link</b></a>
+    </li>
+  </ul>
+</div>
+
+<div class="page" data-sidebar="#links">
+  <h1><i class="icon-globe"></i> Learn more on the web</h1>
+  <p class="med">There are hundreds of thousands, if not <em>millions</em> of
+    online resources for learning programming, software development, and web design online,
+    and many of them are 100% FREE! Given the constantly changing
+    technology landscape, the best way to keep your programming skills
+    sharp is to <b>constantly</b> keep learning about the greatest
+    and latest types of technology. Here is a list of great resources to help you get started.<br><br>
+    If you find a helpful resource that is not listed below, please
+    consider contributing: <a data-toggle="modal" data-target="#modal-add-link"><b>add a link to our collection</b></a>.</p>
+  <br><br>
+
+
+
+  <% for category in Category.all %>
+
+  <section>
+    <header><h3><%= category.name%></h3></header>
+
+    <div class="row">
+      <% for link in Link.where(category_id: category.id) %>
+          <article class="col-md-4 shoulder-pads">
+            <header><h4>
+              <a href="<%= link.url%>">
+                <%= link.title %>
+              </a>
+            </h4></header>
+        <span class="subheader">
+          <%= link.url.sub('http://','') %>
+        </span>
+            <br>
+            <%= image_tag link.image, class: 'img-rounded link-img' unless link.image.blank?%>
+            <%= simple_format(link.description)%>
+          </article>
+      <% end %>
+    </div>
+  </section>
+      <br>
+      <hr>
+      <br>
+  <% end %>
+
+</div>
+
+<!-- q and a form modal -->
+<div class="modal fade in" id="modal-add-link" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        Share a link
+      </div>
+      <div class="modal-body">
+        <div class="wrapper qa-form">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div><!-- /.modal -->

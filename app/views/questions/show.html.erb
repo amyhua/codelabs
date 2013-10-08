@@ -1,3 +1,11 @@
+<div class="navbar-fixed-below-top">
+  <ul class="nav navbar-nav container">
+    <li>
+      <%= link_to 'Back', questions_path %>
+    </li>
+  </ul>
+</div>
+
 <div class="page three-fourths" data-sidebar="#q-n-a">
 
 
@@ -32,8 +40,10 @@
           </a>
           <div class="media-body">
             <%= simple_format answer.content %>
-            <small class="media-heading">-- <%= link_to answer.user.name, user_path(answer.user)%>
-              <%= time_ago_in_words(answer.updated_at) %> ago</small>
+            <div class="align-right">
+              <small class="media-heading">-- <%= link_to answer.user.name, user_path(answer.user)%>
+                <%= time_ago_in_words(answer.updated_at) %> ago</small>
+            </div>
           </div>
         </div>
 

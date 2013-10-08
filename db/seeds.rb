@@ -27,37 +27,73 @@ end
 Category.destroy_all
 Category.reset_pk_sequence
 Category.create!([
-                     {id: 1, name: 'Music', color: '#971e7b'},
-                     {id: 2, name: 'Art', color: '#cc2274'},
-                     {id: 3, name: 'Culinary', color: '#db1a19'},
-                     {id: 4, name: 'Sports', color: '#f26425'},
-                     {id: 5, name: 'Festivals', color: '#f0b93e'},
-                     {id: 6, name: 'Green Events', color: '#8ed645'},
-                     {id: 7, name: 'Contests', color: '#028f48'},
-                     {id: 8, name: 'Seminars', color: '#02aab3'},
-                     {id: 9, name: 'Theater', color: '#00e0df'},
-                     {id: 10, name: 'Cinema', color: '#02b0dd'},
-                     {id: 11, name: 'Fashion', color: '#1972db'},
-                     {id: 12, name: 'Technology', color: '#123eb4'},
-                     {id: 13, name: 'Expos & Trade Fairs', color: '#19177a'},
-                     {id: 14, name: 'Theme Parks', color: '#462096'},
-                     {id: 15, name: 'Product Launches', color: '#6800a9'},
-                     {id: 16, name: 'Other', color: '#686868'}]
-)
+                     {id: 1, name: 'Programming Tutorials: Learn to Code'},
+                     {id: 2, name: 'Q & A: "I need help!"'},
+                     {id: 3, name: "Code Communities: Other People's Code"},
+                     {id: 4, name: "Design and Typography"},
+                     {id: 5, name: 'Tech News'},
+                     {id: 6, name: 'Tech Events: Hackathons and Meetups'},
+                     {id: 7, name: 'Projects and Exercises'}
+])
 
-Event.delete_all
-100.times do
-  event = Event.create!(
-      name: 'Sed ut perspiciatis unde omnis iste',
-      summary: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.',
-      price_string: '$' + Random.rand(100).to_s,
-      start_date: Time.at(rand * Time.now.to_i).strftime('%Y/%-m/%-d'),
-      end_date: Time.at(rand * Time.now.to_i).strftime('%Y/%-m/%-d'),
-      start_time: Time.at(rand * Time.now.to_i).strftime('%H:%M%P'),
-      end_time: Time.at(rand * Time.now.to_i).strftime('%H:%M%P')
-  )
-  rand_id = Category.first.id + Random.rand(15)
-  event.category = Category.where(id: rand_id).first
-  event.name = event.name + ' ' + event.category.name
-  event.save!
-end
+Link.destroy_all
+
+Link.create! ([
+    {category_id: 1,
+     title: 'Code School',
+     description: "CodeSchool does a great job of teaching you web development in a clear, fun, and engaging way from Beginner to Advanced. Follow along their instructors as they teach you through video lectures, slides, and coding challenges. Learn web development, design, typography, mobile development, programming, methodology, best practices, and more. Full access cost $20/month, but some classes are FREE.",
+     url: 'http://www.codeschool.com',
+     image: 'https://s3.amazonaws.com/uploads.uservoice.com/logo/design_setting/19701/original/code_school.png?1315327949'
+    },
+    {category_id: 2,
+     title: 'Stack Overflow',
+     description: "Stack Overflow is currently the web's premier source for programming help, questions, and answers. If you need help, run into an error, or want to offer help, visit Stack Overflow.",
+     url: 'http://stackoverflow.com',
+     image: 'http://blog.moovweb.com/content/uploads/2013/09/stackoverflow-logo.png'
+    },
+    {category_id: 3,
+     title: 'GitHub',
+     description: "Based off Git version control (https://www.codeschool.com/courses/try-git),  GitHub is the web's #1 source for hosting and sharing code with others.  A great way to learn to code is to see other people's code -- on GitHub.",
+     url: 'http://github.com',
+     image: 'http://www.wakanda.org/sites/default/files/blog/blog-github.png'
+    },
+    {category_id: 1,
+     title: 'Code Academy',
+     description: "\"Codecademy is the easiest way to learn how to code. It's interactive, fun, and you can do it with your friends.\" Learn everything from Web Fundamentals to Ruby, jQuery, Javascript, PHP, APIs, etc. through Codeacademy exercises and projects. See all their non-tracked courses, too (http://www.codecademy.com/courses/lang/all)",
+     url: 'http://www.codeacademy.com',
+     image: 'http://tech.co/wp-content/uploads/2012/07/Codecademy.png'
+    },
+    {category_id: 5,
+     title: 'Hacker News',
+     description: "Hacker News is the NY Times of technology. It is \"a social news website that caters to programmers and entrepreneurs, delivering content related to computer science and entrepreneurship.\" Articles collected through Hacker News represent the bleeding edge news source for technologists.",
+     url: 'https://news.ycombinator.com/',
+     image: 'http://www.brownsteinegusa.com/wp-content/uploads/2012/05/hackernews.gif'
+    },
+    {category_id: 6,
+     title: 'Tech Crunch',
+     description: "Tech Crunch publishes news, analysis, and profiles on startup companies, products and websites. Learn about the newest and coolest startups and gadgets here.",
+     url: 'https://techcrunch.com/',
+     image: 'http://www.directtrafficmedia.co.uk/uploads/blog/TechCrunch%20Logo.jpg'
+    },
+    {category_id: 6,
+     title: 'Meetup.com',
+     description: "\"Meetup is the world's largest network of local groups\" and the #1 website tech event organizers and groups use to organizer events, gatherings, hackathons, and more.",
+     url: "http://www.meetup.com/" ,
+     image: 'http://chan.catiewayne.com/c/src/135735520541.jpg'
+    },
+    {category_id: 7,
+     title: 'Learn Code the Hard Way',
+     description: "Learn Code the Hard Way is a source of quality free e-books and coding exercises that teach you to learn to code by doing.",
+     url: 'http://learncodethehardway.org/',
+     image: ''
+    },
+    {title: "Simple Icons", url: "http://simpleicons.org/", image: "",
+     description: "Simple Icons is a free collection of icons to use in your website.",
+     category_id: 4
+    },
+    {title: "Icon Finder", url: "http://iconfinder.com/", image: "",
+     description: "Icon Finder is one of the largest sources of free and premium icons.",
+     category_id: 4
+    }
+
+])

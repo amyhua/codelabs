@@ -17,6 +17,10 @@
                     },
                     "alertText": "* Field must equal test"
                 },
+                "imageurl": {
+                    "regex": "/*.(jpg|jpeg|gif|png)",
+                    "alertText": "* Invalid image URL. Must end in .jpg, .jpeg, .gif, or .png"
+                },
                 "dateRange": {
                     "regex": "none",
                     "alertText": "* Invalid ",

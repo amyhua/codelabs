@@ -1,4 +1,4 @@
-<%= simple_form_for @codepen, url: user_codepens_path(current_user), html: {class: 'narrow', role: 'form'} do |f| %>
+<%= simple_form_for @codepen=Codepen.new, url: user_codepens_path(current_user), html: {class: 'narrow', role: 'form'} do |f| %>
   <% if @codepen.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@codepen.errors.count, "error") %> prohibited this codepen from being saved:</h2>

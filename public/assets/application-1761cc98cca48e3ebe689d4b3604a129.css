@@ -125,8 +125,8 @@ ul {
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/assets/fontawesome-webfont.eot');
-  src: url('/assets/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/fontawesome-webfont.woff') format('woff'), url('/assets/fontawesome-webfont.ttf') format('truetype'), url('/assets/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  src: url('/assets/fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot');
+  src: url('/assets/fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot?#iefix') format('embedded-opentype'), url('/assets/fontawesome-webfont-b4d67f1e5651506c3e80d842ee67d6ba.woff') format('woff'), url('/assets/fontawesome-webfont-fb7a72c810ec644f3c26dcca68638308.ttf') format('truetype'), url('/assets/fontawesome-webfont-f1c2889911d212e1403b68eabc1a3a56.svg#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -7592,29 +7592,29 @@ nav.left > .button.active:hover > span {
 /* the external css file. mostly. */
 @font-face {
   font-family: 'Aller';
-  src: url("/assets/Aller_Rg.eot");
-  src: local("☺"), url("/assets/Aller_Rg.woff") format("woff"), url("/assets/Aller_Rg.ttf") format("truetype"), url("/assets/Aller_Rg.svg") format("svg");
+  src: url("/assets/Aller_Rg-eac7161232c688374dd133fff952a5d1.eot");
+  src: local("☺"), url("/assets/Aller_Rg-21e911cec62edc4d1bdd00803e7bff17.woff") format("woff"), url("/assets/Aller_Rg-d525b4c5544a48604711cc32820b3dc3.ttf") format("truetype"), url("/assets/Aller_Rg-734f792a61561d944ff579423098209b.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Aller';
-  src: url("/assets/Aller_Lt.eot");
-  src: local("☺"), url("/assets/Aller_Lt.woff") format("woff"), url("/assets/Aller_Lt.ttf") format("truetype"), url("/assets/Aller_Lt.svg") format("svg");
+  src: url("/assets/Aller_Lt-d82d7ffa13976e224f1615e1a4dd7bac.eot");
+  src: local("☺"), url("/assets/Aller_Lt-e04c49fb2eb8e1a93bfcf8d6d0cbd724.woff") format("woff"), url("/assets/Aller_Lt-9bfb34f246fd1ca4d264ef1151f78de7.ttf") format("truetype"), url("/assets/Aller_Lt-e4924fb218684762818b9c511cd9ea03.svg") format("svg");
   font-weight: 100;
   font-style: normal; }
 
 @font-face {
   font-family: 'Aller';
-  src: url("/assets/Aller_Bd.eot");
-  src: local("☺"), url("/assets/Aller_Bd.woff") format("woff"), url("/assets/Aller_Bd.ttf") format("truetype"), url("/assets/Aller_Bd.svg") format("svg");
+  src: url("/assets/Aller_Bd-e8b5b290408c9c9d6292dff560bd053d.eot");
+  src: local("☺"), url("/assets/Aller_Bd-7129371b182d0a7a1ccecfd6b9dd9308.woff") format("woff"), url("/assets/Aller_Bd-303c3483f811e6170f49e22d52cc6ac2.ttf") format("truetype"), url("/assets/Aller_Bd-c7ae01e5c199a9067b033a38b81a2229.svg") format("svg");
   font-weight: bold;
   font-style: normal; }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
-    src: url("/assets/Aller_It.eot");
-    src: local("☺"), url("/assets/Aller_It.woff") format("woff"), url("/assets/Aller_It.ttf") format("truetype"), url("/assets/Aller_It.svg") format("svg");
+    src: url("/assets/Aller_It-abd4ec71b176fa2ac443d7ff9132a455.eot");
+    src: local("☺"), url("/assets/Aller_It-5b87289e19dd4302b515b6f3c3338024.woff") format("woff"), url("/assets/Aller_It-9a9bbbe8ad2b9a335ac97ceda3b1db59.ttf") format("truetype"), url("/assets/Aller_It-e6afc613361bcaf7f20fff68403d0d04.svg") format("svg");
     text-decoration: italic;
     font-style: normal; } }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
